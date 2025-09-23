@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>EnergyDiff</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; text-align: center; }
+    h1 { margin-top: 40px; }
+    .charts { display: flex; justify-content: center; gap: 40px; margin: 40px; flex-wrap: wrap; }
+    footer {
+      background: #22d3ee;
+      color: white;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 15px 30px; font-size: 22px; font-weight: bold;
+      position: fixed; bottom: 0; width: 100%;
+    }
+    .icons { display: flex; gap: 20px; }
+    .icons span { cursor: pointer; font-size: 24px; }
+  </style>
+</head>
+<body>
+  <h1>Welcome, Aly</h1>
+
+  <div class="charts">
+    <canvas id="barChart" width="300" height="250"></canvas>
+    <canvas id="pieChart" width="300" height="250"></canvas>
+  </div>
+
+  <footer>
+    EnergyDiff
+    <div class="icons">
+      <span>💬</span>
+      <span>⚙️</span>
+    </div>
+  </footer>
+
+  <script>
+    const barCtx = document.getElementById('barChart').getContext('2d');
+    new Chart(barCtx, {
+      type: 'bar',
+      data: {
+        labels: ['Item 1', 'Item 2', 'Item 3', 'Item 4'],
+        datasets: [{
+          label: 'Values',
+          data: [8, 12, 16, 20],
+          backgroundColor: '#2563EB'
+        }]
+      }
+    });
+
+    const pieCtx = document.getElementById('pieChart').getContext('2d');
+    new Chart(pieCtx, {
+      type: 'pie',
+      data: {
+        labels: ['Item 1', 'Item 2', 'Item 3'],
+        datasets: [{
+          data: [62.5, 25, 12.5],
+          backgroundColor: ['#6EE7B7', '#3B82F6', '#1E40AF']
+        }]
+      }
+    });
+  </script>
+</body>
+</html>
