@@ -1,1 +1,98 @@
-<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8" /> <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <title>Health Monitor App</title> <link rel="stylesheet" href="style.css" /> </head> <body> <header> <h1>Heart Beat Monitor</h1> <nav> <button onclick="showSection('dashboard')">Dashboard</button> <button onclick="showSection('profile')">Profile</button> <button onclick="showSection('cart')">Cart</button> <button onclick="showSection('membership')">Membership</button> <button onclick="showSection('settings')">Settings</button> </nav> </header> <!-- Dashboard --> <section id="dashboard" class="active"> <h2>My Day</h2> <div class="card">❤️ Heart Rate: <span id="bpm">87</span> BPM</div> <h3>Drinks</h3> <div class="grid"> <div class="card"> <h4>Neuro Drinks</h4> <p>Sugar free</p> <p>Price: 29.99 AED</p> <button onclick="addToCart('Neuro Drinks', 29.99)">Add to Cart</button> </div> <div class="card"> <h4>Green Tea</h4> <p>Health beneficial</p> <p>Price: 22.99 AED</p> <button onclick="addToCart('Green Tea', 22.99)">Add to Cart</button> </div> <div class="card"> <h4>Melon Refresher</h4> <p>Sugar free</p> <p>Price: 25.99 AED</p> <button onclick="addToCart('Melon Refresher', 25.99)">Add to Cart</button> </div> </div> <h3>Offers</h3> <div class="grid"> <div class="card">15% off when you buy 10 drinks</div> <div class="card">20% off orders over 300 AED</div> </div> </section> <!-- Profile --> <section id="profile"> <h2>Profile</h2> <p>Name: John Doe</p> <p>Gender: Male</p> <p>Member since: August 2024</p> <p>Birthday: Jan 1, 2000</p> <p>Height: 175 cm</p> <p>Weight: 70 kg</p> </section> <!-- Cart --> <section id="cart"> <h2>Cart</h2> <ul id="cart-items"></ul> <p>Total: <span id="cart-total">0.00</span> AED</p> </section> <!-- Membership --> <section id="membership"> <h2>Membership Services</h2> <p>Annual: 877 AED / yr (+ tax)</p> <p>You’re saving 33%</p> <p>Next Renewal: April 23, 2026</p> </section> <!-- Settings --> <section id="settings"> <h2>Settings</h2> <p>Email: example@mail.com</p> <p>Password: ********</p> <p>Phone: +971-55-1234567</p> <h3>App Settings</h3> <p>Camera: On</p> <p>Location: Off</p> <p>Notifications: On</p> <p>Language: English</p> </section> <script src="script.js"></script> </body> </html>
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Health Monitor App</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Heart Beat Monitor</h1>
+    <nav>
+      <button onclick="showSection('dashboard')">Dashboard</button>
+      <button onclick="showSection('profile')">Profile</button>
+      <button onclick="showSection('cart')">Cart</button>
+      <button onclick="showSection('membership')">Membership</button>
+      <button onclick="showSection('settings')">Settings</button>
+    </nav>
+  </header>
+
+  <!-- Dashboard -->
+  <section id="dashboard" class="active">
+    <h2>My Day</h2>
+    <div class="card">❤️ Heart Rate: <span id="bpm">87</span> BPM</div>
+
+    <h3>Drinks</h3>
+    <div class="grid">
+      <div class="card">
+        <h4>Neuro Drinks</h4>
+        <p>Sugar free</p>
+        <p>Price: 29.99 AED</p>
+        <button onclick="addToCart('Neuro Drinks', 29.99)">Add to Cart</button>
+      </div>
+      <div class="card">
+        <h4>Green Tea</h4>
+        <p>Health beneficial</p>
+        <p>Price: 22.99 AED</p>
+        <button onclick="addToCart('Green Tea', 22.99)">Add to Cart</button>
+      </div>
+      <div class="card">
+        <h4>Melon Refresher</h4>
+        <p>Sugar free</p>
+        <p>Price: 25.99 AED</p>
+        <button onclick="addToCart('Melon Refresher', 25.99)">Add to Cart</button>
+      </div>
+    </div>
+
+    <h3>Offers</h3>
+    <div class="grid">
+      <div class="card">15% off when you buy 10 drinks</div>
+      <div class="card">20% off orders over 300 AED</div>
+    </div>
+  </section>
+
+  <!-- Profile -->
+  <section id="profile">
+    <h2>Profile</h2>
+    <p>Name: John Doe</p>
+    <p>Gender: Male</p>
+    <p>Member since: August 2024</p>
+    <p>Birthday: Jan 1, 2000</p>
+    <p>Height: 175 cm</p>
+    <p>Weight: 70 kg</p>
+  </section>
+
+  <!-- Cart -->
+  <section id="cart">
+    <h2>Cart</h2>
+    <ul id="cart-items"></ul>
+    <p>Total: <span id="cart-total">0.00</span> AED</p>
+  </section>
+
+  <!-- Membership -->
+  <section id="membership">
+    <h2>Membership Services</h2>
+    <p>Annual: 877 AED / yr (+ tax)</p>
+    <p>You’re saving 33%</p>
+    <p>Next Renewal: April 23, 2026</p>
+  </section>
+
+  <!-- Settings -->
+  <section id="settings">
+    <h2>Settings</h2>
+    <p>Email: example@mail.com</p>
+    <p>Password: ********</p>
+    <p>Phone: +971-55-1234567</p>
+
+    <h3>App Settings</h3>
+    <p>Camera: On</p>
+    <p>Location: Off</p>
+    <p>Notifications: On</p>
+    <p>Language: English</p>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
