@@ -1,0 +1,51 @@
+/* style.css */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f5f5f5;
+  color: #333;
+}
+
+header {
+  background: #4caf50;
+  color: white;
+  padding: 1em;
+  text-align: center;
+}
+
+nav button {
+  margin: 0.3em;
+  padding: 0.5em 1em;
+  border: none;
+  background: white;
+  color: #4caf50;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+nav button:hover {
+  background: #eee;
+}
+
+section {
+  display: none;
+  padding: 1em;
+}
+
+section.active {
+  display: block;
+}
+
+.card {
+  background: white;
+  padding: 1em;
+  margin: 0.5em 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1em;
+}
