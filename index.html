@@ -1,98 +1,1149 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Health Monitor App</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Monitor App</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .phone-container {
+            width: 100%;
+            max-width: 400px;
+            height: 800px;
+            background: white;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .screen {
+            display: none;
+            height: 100%;
+            overflow-y: auto;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .screen.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .back-btn {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Home Screen */
+        .home-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            padding: 20px;
+        }
+
+        .home-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-align: center;
+        }
+
+        .home-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .home-card h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .home-card .icon {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        /* Heart Rate Display */
+        .heart-rate-display {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .bpm-value {
+            font-size: 72px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .bpm-label {
+            font-size: 24px;
+            opacity: 0.9;
+        }
+
+        .chart-container {
+            padding: 20px;
+            background: white;
+        }
+
+        .chart {
+            width: 100%;
+            height: 200px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 10px;
+            position: rela  tive;
+        }
+
+        .chart-bars {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            height: 100%;
+        }
+
+        .bar {
+            width: 40px;
+            background: linear-gradient(to top, #667eea, #764ba2);
+            border-radius: 5px 5px 0 0;
+            transition: height 0.3s ease;
+        }
+
+        /* Products */
+        .products-list {
+            padding: 20px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product-info h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .product-info p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .product-price {
+            font-size: 20px;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .add-to-cart-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: transform 0.2s;
+        }
+
+        .add-to-cart-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* Cart */
+        .cart-items {
+            padding: 20px;
+        }
+
+        .cart-item {
+            background: white;
+            border-radius: 15px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-total {
+            padding: 20px;
+            background: #f5f5f5;
+            margin: 0 20px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .cart-total h3 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .checkout-btn {
+            width: calc(100% - 40px);
+            margin: 20px;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 18px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        /* Profile */
+        .profile-content {
+            padding: 20px;
+        }
+
+        .profile-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 30px 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .profile-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: white;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+        }
+
+        .profile-field {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .profile-field label {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .profile-field input {
+            width: 100%;
+            border: none;
+            font-size: 16px;
+            color: #333;
+            background: transparent;
+        }
+
+        /* Settings */
+        .settings-list {
+            padding: 20px;
+        }
+
+        .settings-item {
+            background: white;
+            border-radius: 10px;
+            padding: 15px 20px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .settings-item:hover {
+            background: #f5f5f5;
+        }
+
+        .settings-item span {
+            font-size: 16px;
+            color: #333;
+        }
+
+        .settings-item .arrow {
+            color: #999;
+        }
+
+        /* Membership */
+        .membership-card {
+            margin: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            padding: 30px;
+            color: white;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .membership-price {
+            font-size: 48px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .membership-details {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .membership-detail {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        /* Coupons */
+        .coupons-container {
+            padding: 20px;
+        }
+
+        .points-balance {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            padding: 30px;
+            color: white;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .points-value {
+            font-size: 64px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .coupon-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .coupon-discount {
+            font-size: 32px;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .apply-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        /* Blood Pressure */
+        .bp-display {
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .bp-value {
+            font-size: 64px;
+            font-weight: bold;
+            color: #667eea;
+            margin: 20px 0;
+        }
+
+        .scatter-plot {
+            width: 100%;
+            height: 300px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            margin: 20px 0;
+            padding: 20px;
+            position: relative;
+        }
+
+        /* Sleep Performance */
+        .sleep-display {
+            padding: 20px;
+        }
+
+        .sleep-hours {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+
+        .sleep-hours h2 {
+            font-size: 56px;
+            margin: 10px 0;
+        }
+
+        .sleep-stages {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .sleep-stage {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .sleep-stage:last-child {
+            border-bottom: none;
+        }
+
+        /* Stress Monitor */
+        .stress-display {
+            padding: 20px;
+        }
+
+        .stress-meter {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+
+        .stress-score {
+            font-size: 64px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .stress-info {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        /* Calendar */
+        .calendar-container {
+            padding: 20px;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+        }
+
+        .calendar-day {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .calendar-day:hover {
+            background: #667eea;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .calendar-day.today {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        /* Bottom Navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 400px;
+            background: white;
+            border-top: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+        }
+
+        .nav-item {
+            text-align: center;
+            cursor: pointer;
+            padding: 5px 15px;
+            transition: all 0.2s;
+            flex: 1;
+        }
+
+        .nav-item:hover {
+            background: #f5f5f5;
+            border-radius: 10px;
+        }
+
+        .nav-item.active {
+            color: #667eea;
+        }
+
+        .nav-icon {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .nav-label {
+            font-size: 10px;
+        }
+
+        .remove-btn {
+            background: #f5576c;
+            color: white;
+            border: none;
+            padding: 5px 15px;
+            border-radius: 15px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>Heart Beat Monitor</h1>
-    <nav>
-      <button onclick="showSection('dashboard')">Dashboard</button>
-      <button onclick="showSection('profile')">Profile</button>
-      <button onclick="showSection('cart')">Cart</button>
-      <button onclick="showSection('membership')">Membership</button>
-      <button onclick="showSection('settings')">Settings</button>
-    </nav>
-  </header>
+    <div class="phone-container">
+        <!-- Home Screen -->
+        <div id="home" class="screen active">
+            <div class="header">
+                <h1>My Day</h1>
+            </div>
+            <div class="home-grid">
+                <div class="home-card" onclick="showScreen('heartRate')">
+                    <div class="icon">❤️</div>
+                    <h3>Heart Rate</h3>
+                    <p style="font-size: 24px; color: #667eea; font-weight: bold;">87 BPM</p>
+                </div>
+                <div class="home-card" onclick="showScreen('stress')">
+                    <div class="icon">😌</div>
+                    <h3>Stress Monitor</h3>
+                </div>
+                <div class="home-card" onclick="showScreen('sleep')">
+                    <div class="icon">😴</div>
+                    <h3>Sleep Performance</h3>
+                </div>
+                <div class="home-card" onclick="showScreen('bloodPressure')">
+                    <div class="icon">💓</div>
+                    <h3>Blood Pressure</h3>
+                </div>
+                <div class="home-card" onclick="showScreen('calendar')">
+                    <div class="icon">📅</div>
+                    <h3>Health Calendar</h3>
+                </div>
+                <div class="home-card" onclick="showScreen('products')">
+                    <div class="icon">🥤</div>
+                    <h3>Products</h3>
+                </div>
+            </div>
+        </div>
 
-  <!-- Dashboard -->
-  <section id="dashboard" class="active">
-    <h2>My Day</h2>
-    <div class="card">❤️ Heart Rate: <span id="bpm">87</span> BPM</div>
+        <!-- Heart Rate Screen -->
+        <div id="heartRate" class="screen">
+            <div class="header">
+                <button class="back-btn" onclick="showScreen('home')">←</button>
+                <h1>Heart Rate</h1>
+                <div style="width: 36px;"></div>
+            </div>
+            <div class="heart-rate-display">
+                <div class="bpm-value">87</div>
+                <div class="bpm-label">BPM</div>
+            </div>
+            <div class="chart-container">
+                <h3 style="margin-bottom: 15px;">Daily Trend</h3>
+                <div class="chart">
+                    <div class="chart-bars">
+                        <div class="bar" style="height: 30%;"></div>
+                        <div class="bar" style="height: 50%;"></div>
+                        <div class="bar" style="height: 70%;"></div>
+                        <div class="bar" style="height: 90%;"></div>
+                        <div class="bar" style="height: 60%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <h3>Drinks</h3>
-    <div class="grid">
-      <div class="card">
-        <h4>Neuro Drinks</h4>
-        <p>Sugar free</p>
-        <p>Price: 29.99 AED</p>
-        <button onclick="addToCart('Neuro Drinks', 29.99)">Add to Cart</button>
-      </div>
-      <div class="card">
-        <h4>Green Tea</h4>
-        <p>Health beneficial</p>
-        <p>Price: 22.99 AED</p>
-        <button onclick="addToCart('Green Tea', 22.99)">Add to Cart</button>
-      </div>
-      <div class="card">
-        <h4>Melon Refresher</h4>
-        <p>Sugar free</p>
-        <p>Price: 25.99 AED</p>
-        <button onclick="addToCart('Melon Refresher', 25.99)">Add to Cart</button>
-      </div>
+        <!-- Products Screen -->
+        <div id="products" class="screen">
+            <div class="header">
+                <button class="back-btn" onclick="showScreen('home')">←</button>
+                <h1>Products</h1>
+                <div style="width: 36px;"></div>
+            </div>
+            <div class="products-list">
+                <div class="product-card">
+                    <div class="product-info">
+                        <h3>Neuro drinks</h3>
+                        <p>sugar free drinks</p>
+                        <div class="product-price">29.99 AED</div>
+                    </div>
+                    <button class="add-to-cart-btn" onclick="addToCart('Neuro drinks', 29.99, 'sugar free drinks')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <div class="product-info">
+                        <h3>Green Tea</h3>
+                        <p>Health beneficial</p>
+                        <div class="product-price">22.99 AED</div>
+                    </div>
+                    <button class="add-to-cart-btn" onclick="addToCart('Green Tea', 22.99, 'Health beneficial')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <div class="product-info">
+                        <h3>Melon Refresher</h3>
+                        <p>free of sugar</p>
+                        <div class="product-price">25.99 AED</div>
+                    </div>
+                    <button class="add-to-cart-btn" onclick="addToCart('Melon Refresher', 25.99, 'free of sugar')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cart Screen -->
+        <div id="cart" class="screen">
+            <div class="header">
+                <button class="back-btn" onclick="showScreen('products')">←</button>
+                <h1>Cart</h1>
+                <div style="width: 36px;"></div>
+            </div>
+            <div class="cart-items" id="cartItems">
+                <p style="text-align: center; padding: 40px; color: #999;">Your cart is empty</p>
+            </div>
+            <div class="cart-total">
+                <h3>Total: <span id="cartTotal">0.00</span> AED</h3>
+            </div>
+            <button class="checkout-btn" onclick="checkout()">Checkout</button>
+        </div>
+
+        <!-- Profile Screen -->
+        <div id="profile" class="screen">
+            <div class="profile-header">
+                <div class="profile-avatar">👤</div>
+                <h2>Profile</h2>
+                <button style="background: rgba(255,255,255,0.2); border: none; color: white; padding: 8px 20px; border-radius: 15px; margin-top: 10px; cursor: pointer;">Edit</button>
+            </div>
+            <div class="profile-content">
+                <div class="profile-field">
+                    <label>Name</label>
+                    <input type="text" value="John Doe" readonly>
+                </div>
+                <div class="profile-field">
+                    <label>Gender</label>
+                    <input type="text" value="Male" readonly>
+                </div>
+                <div class="profile-field">
+                    <label>Member since</label>
+                    <input type="text" value="August 2024" readonly>
+                </div>
+                <div class="profile-field">
+                    <label>Birthday</label>
+                    <input type="text" value="January 1, 1990" readonly>
+                </div>
+                <div class="profile-field">
+                    <label>Height</label>
+                    <input type="text" value="175 cm" readonly>
+                </div>
+                <div class="profile-field">
+                    <label>Weight</label>
+                    <input type="text" value="70 kg" readonly>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Screen -->
+        <div id="settings" class="screen">
+            <div class="header">
+                <button class="back-btn" onclick="showScreen('home')">←</button>
+                <h1>Settings</h1>
+                <div style="width: 36px;"></div>
+            </div>
+            <div class="settings-list">
+                <div class="settings-item" onclick="showScreen('account')">
+                    <span>My Account</span>
+                    <span class="arrow">→</span>
+                </div>
+                <div class="settings-item" onclick="showScreen('membership')">
+                    <span>Membership Services</span>
+                    <span class="arrow">→</span>
+                </div>
+                <div class="settings-item" onclick="showScreen('appSettings')">
+                    <span>App Settings</span>
+                    <span class="arrow">→</span>
+                </div>
+                <div class="settings-item" onclick="alert('Logged out')">
+                    <span style="color: #f5576c;">Log out</span>
+                </div>
+                <div class="settings-item" onclick="alert('Account deleted')">
+                    <span style="color: #f5576c;">Delete Account</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Account Screen -->
+        <div id="account" class="screen">
+            <div class="header">
+                <button class="back-btn" onclick="showScreen('settings')">←</button>
+                <h1>My Account</h1>
+                <div style="width: 36px;"></div>
+            </div>
+            <div class="profile-content">
+                <div class="profile-field">
+                    <label>Email</label>
+                    <input type="email" value="johndoe@example.com" readonly>
+                </div>
+                <div class="profile-field">
+                    <label>Password</label>
+                    <input type="password" value="********" readonly>
+                </div>
+                <div class="profile-field">
+                    <label>Phone Number</label>
+                    <input type="tel" value="+971 50 123 4567" readonly>
+                </div>
+            </div>
+        </div>
+
+        <!-- Membership Screen -->
+        <div id="membership" class="screen">
+            <div class="header">
+                <button class="back-btn" onclick="showScreen('settings')">←</button>
+                <h1>Membership</h1>
+                <div style="width: 36px;"></div>
+            </div>
+            <div class="membership-card">
+                <h3>Your Membership</h3>
+                <div class="membership-price">877 AED/yr</div>
+                <p>Plus tax</p>
+                <div class="membership-details">
+                    <div class="membership-detail">
+                        <span>Billed</span>
+                        <strong>Annually</strong>
+                    </div>
+                    <div class="membership-detail">
+                        <span>Savings</span>
+                        <strong>33%</strong>
+                    </div>
+                    <div class="membership-detail">
+                        <span>Next Renewal</span>
+                        <strong>April 23, 2026</strong>
+                    </div>
+                </div>
+                <button style="width: 100%; margin-top: 20px; padding: 12px; background: rgba(255,255,255,0.2); border: 1px solid white; color: white; border-radius: 20px; cursor: pointer;">Cancel Membership</button>
+            </div>
+            <div class="settings-list">
+                <div class="settings-item">
+                    <span>Payment Method</span>
+                    <span class="arrow">→</span>
+                </div>
+                <div class="settings-item">
+                    <span>Redeem Membership Code</span>
+                    <span class="arrow">→</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- App Settings Screen -->
+        <div id="appSettings" class="screen">
+            <div class="header">
+                <button class="back-btn" onclick="showScreen('settings')">←</button>
+                <h1>App Settings</h1>
+                <div style="width: 36px;"></div>
+            </div>
+            <div class="settings-list">
+                <div class="settings-item">
+                    <span>Camera</span>
+                    <span class="arrow">→</span>
+                </div>
+                <div class="settings-item">
+                    <span>Location</span>
+                    <span class="arrow">→</span>
+                </div>
+                <div class="settings-item">
+                    <span>Notification</span>
+                    <span class="arrow">→</span>
+                </div>
+                <div class="settings-item">
+                    <span>Language</span>
+                    <span class="arrow">→</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Coupons Screen -->
+        <div id="coupons" class="screen">
+            <div class="header">
+                <button class="back-btn" onclick="showScreen('home')">←</button>
+                <h1>Coupons</h1>
+                <div style="width: 36px;"></div>
+            </div>
+            <div class="coupons-container">
+                <div class="points-balance">
+                    <h3>Points Balance</h3>
+                    <div class="points-value">174</div>
+                    <p style="font-size: 14px; opacity: 0.9;">45% of next reward</p>
+                </div>
+                <h3 style="margin: 20px 0 10px 0;">Coupon Offers</h3>
+                <div class="coupon-card">
+                    <div>
+                        <div class="coupon-discount">15.0% off</div>
+                        <p style="font-size: 12px; color: #666; margin-top: 5px;">Get 15% off at checkout when you buy 10 drinks</p>
+                    </div>
+                    <button class="apply-btn">Apply</button>
+                </div>
+                <div class="coupon-card">
+                    <div>
+                        <div class="coupon-discount">20.0% off</div>
+                        <p style="font-size: 12px; color: #666; margin-top: 5px;">Enjoy 20% off your entire order when you spend 300 AED or more</p>
+                    </div>
+                    <button class="apply-btn">Apply</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Blood Pressure Screen -->
+        <div id="bloodPressure" class="screen">
+            <div class="header">
+                <button class="back-btn" onclick="showScreen('home')">←</button>
+                <h1>Blood Pressure</h1>
+                <div style="width: 36px;"></div>
+            </div>
+            <div class="bp-display">
+                <h2>Blood Pressure Insights</h2>
+                <div class="bp-value">120/80</div>
+                <p style="color: #666; margin: 20px 0;">Wear your device to begin measuring blood pressure. Readings will appear as points on a scatter plot, helping you monitor trends and gain insights into your cardiovascular health over time.</p>
+                <div class="scatter-plot">
+                    <canvas id="bpChart" width="300" height="250"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sleep Performance Screen -->
+        <div id="sleep" class="screen">
+            <div class="header">
+                <button class="back-btn" onclick="showScreen('home')">←</button>
+                <h1>Sleep Performance</h1>
+                <div style="width: 36px;"></div>
+            </div>
+            <div class="sleep-display">
+                <div class="sleep-hours">
+                    <p>Last Night Sleep</p>
+                    <h2>8:54</h2>
+                    <p>Hours of sleep</p>
+                </div>
+                <div class="sleep-stages">
+                    <h3 style="margin-bottom: 15px;">Sleep Stages</h3>
+                    <div class="sleep-stage">
+                        <span>Light</span>
+                        <strong>50%</strong>
+                    </div>
+                    <div class="sleep-stage">
+                        <span>REM</span>
+                        <strong>24%</strong>
+                    </div>
+                    <div class="sleep-stage">
+                        <span>SWS (DEEP)</span>
+                        <strong>21%</strong>
+                    </div>
+                    <div class="sleep-stage">
+                        <span>Awake</span>
+                        <strong>5%</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stress Monitor Screen -->
+        <div id="stress" class="screen">
+            <div class="header">
+                <button class="back-btn" onclick="showScreen('home')">←</button>
+                <h1>Stress Monitor</h1>
+                <div style="width: 36px;"></div>
+            </div>
+            <div class="stress-display">
+                <div class="stress-meter">
+                    <h3>Stress Score</h3>
+                    <div class="stress-score">1.0</div>
+                    <p>Medium</p>
+                </div>
+                <div class="stress-info">
+                    <h3 style="margin-bottom: 15px;">Understanding Stress</h3>
+                    <p style="color: #666; line-height: 1.6; margin-bottom: 20px;">Stress is the body's natural response to a physical or mental challenge. It's a measure of how alert or activated your body is at any given time.</p>
+                    <div style="background: #f5f5f5; padding: 15px; border-radius: 10px; margin-bottom: 10px;">
+                        <strong>0.0-0.9 - Low</strong>
+                        <p style="color: #666; font-size: 14px; margin-top: 5px;">You may be feeling calm, relaxed or sleepy.</p>
+                    </div>
+                    <div style="background: #fff3cd; padding: 15px; border-radius: 10px; margin-bottom: 10px;">
+                        <strong>1.0-1.9 - Medium</strong>
+                        <p style="color: #666; font-size: 14px; margin-top: 5px;">You may be feeling neutral, alert or mildly activated.</p>
+                    </div>
+                    <div style="background: #f8d7da; padding: 15px; border-radius: 10px;">
+                        <strong>2.0-3.0 - High</strong>
+                        <p style="color: #666; font-size: 14px; margin-top: 5px;">You may be feeling excited, stressed or highly activated.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Calendar Screen -->
+        <div id="calendar" class="screen">
+            <div class="header">
+                <button class="back-btn" onclick="showScreen('home')">←</button>
+                <h1>Health Calendar</h1>
+                <div style="width: 36px;"></div>
+            </div>
+            <div class="calendar-container">
+                <div class="calendar-header">
+                    <button style="background: none; border: none; font-size: 24px; cursor: pointer;">←</button>
+                    <h2>May 2026</h2>
+                    <button style="background: none; border: none; font-size: 24px; cursor: pointer;">→</button>
+                </div>
+                <div class="calendar-grid">
+                    <div class="calendar-day">1</div>
+                    <div class="calendar-day today">2</div>
+                    <div class="calendar-day">3</div>
+                    <div class="calendar-day">4</div>
+                    <div class="calendar-day">5</div>
+                    <div class="calendar-day">6</div>
+                    <div class="calendar-day">7</div>
+                    <div class="calendar-day">8</div>
+                    <div class="calendar-day">9</div>
+                    <div class="calendar-day">10</div>
+                    <div class="calendar-day">11</div>
+                    <div class="calendar-day">12</div>
+                    <div class="calendar-day">13</div>
+                    <div class="calendar-day">14</div>
+                    <div class="calendar-day">15</div>
+                    <div class="calendar-day">16</div>
+                    <div class="calendar-day">17</div>
+                    <div class="calendar-day">18</div>
+                    <div class="calendar-day">19</div>
+                    <div class="calendar-day">20</div>
+                    <div class="calendar-day">21</div>
+                    <div class="calendar-day">22</div>
+                    <div class="calendar-day">23</div>
+                    <div class="calendar-day">24</div>
+                </div>
+                <div style="margin-top: 20px; padding: 20px; background: white; border-radius: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                    <h3 style="margin-bottom: 10px;">Event Reminder</h3>
+                    <p style="color: #666;">No events scheduled</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+            <div class="nav-item active" onclick="showScreen('home')">
+                <div class="nav-icon">🏠</div>
+                <div class="nav-label">Home</div>
+            </div>
+            <div class="nav-item" onclick="showScreen('coupons')">
+                <div class="nav-icon">🎫</div>
+                <div class="nav-label">Coupons</div>
+            </div>
+            <div class="nav-item" onclick="showScreen('cart')">
+                <div class="nav-icon">🛒</div>
+                <div class="nav-label">Cart</div>
+            </div>
+            <div class="nav-item" onclick="showScreen('profile')">
+                <div class="nav-icon">👤</div>
+                <div class="nav-label">Profile</div>
+            </div>
+            <div class="nav-item" onclick="showScreen('settings')">
+                <div class="nav-icon">⚙️</div>
+                <div class="nav-label">Settings</div>
+            </div>
+        </div>
     </div>
 
-    <h3>Offers</h3>
-    <div class="grid">
-      <div class="card">15% off when you buy 10 drinks</div>
-      <div class="card">20% off orders over 300 AED</div>
-    </div>
-  </section>
+    <script>
+        let cart = [];
 
-  <!-- Profile -->
-  <section id="profile">
-    <h2>Profile</h2>
-    <p>Name: John Doe</p>
-    <p>Gender: Male</p>
-    <p>Member since: August 2024</p>
-    <p>Birthday: Jan 1, 2000</p>
-    <p>Height: 175 cm</p>
-    <p>Weight: 70 kg</p>
-  </section>
+        function showScreen(screenId) {
+            const screens = document.querySelectorAll('.screen');
+            screens.forEach(screen => screen.classList.remove('active'));
+            document.getElementById(screenId).classList.add('active');
+            
+            // Update bottom nav active state
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => item.classList.remove('active'));
+        }
 
-  <!-- Cart -->
-  <section id="cart">
-    <h2>Cart</h2>
-    <ul id="cart-items"></ul>
-    <p>Total: <span id="cart-total">0.00</span> AED</p>
-  </section>
+        function addToCart(name, price, description) {
+            cart.push({ name, price, description });
+            updateCart();
+            showScreen('cart');
+        }
 
-  <!-- Membership -->
-  <section id="membership">
-    <h2>Membership Services</h2>
-    <p>Annual: 877 AED / yr (+ tax)</p>
-    <p>You’re saving 33%</p>
-    <p>Next Renewal: April 23, 2026</p>
-  </section>
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
 
-  <!-- Settings -->
-  <section id="settings">
-    <h2>Settings</h2>
-    <p>Email: example@mail.com</p>
-    <p>Password: ********</p>
-    <p>Phone: +971-55-1234567</p>
+        function updateCart() {
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p style="text-align: center; padding: 40px; color: #999;">Your cart is empty</p>';
+                cartTotal.textContent = '0.00';
+                return;
+            }
+            
+            let html = '';
+            let total = 0;
+            
+            cart.forEach((item, index) => {
+                total += item.price;
+                html += `
+                    <div class="cart-item">
+                        <div>
+                            <h3 style="font-size: 18px; margin-bottom: 5px;">${item.name}</h3>
+                            <p style="font-size: 14px; color: #666;">${item.description}</p>
+                            <p style="font-size: 16px; color: #667eea; font-weight: bold; margin-top: 5px;">${item.price.toFixed(2)} AED</p>
+                        </div>
+                        <button class="remove-btn" onclick="removeFromCart(${index})">Remove</button>
+                    </div>
+                `;
+            });
+            
+            cartItems.innerHTML = html;
+            cartTotal.textContent = total.toFixed(2);
+        }
 
-    <h3>App Settings</h3>
-    <p>Camera: On</p>
-    <p>Location: Off</p>
-    <p>Notifications: On</p>
-    <p>Language: English</p>
-  </section>
+        function checkout() {
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+            alert('Checkout successful! Total: ' + document.getElementById('cartTotal').textContent + ' AED');
+            cart = [];
+            updateCart();
+        }
 
-  <script src="script.js"></script>
+        // Initialize blood pressure chart
+        window.addEventListener('load', function() {
+            const canvas = document.getElementById('bpChart');
+            if (canvas) {
+                const ctx = canvas.getContext('2d');
+                ctx.strokeStyle = '#667eea';
+                ctx.fillStyle = '#667eea';
+                
+                // Draw axes
+                ctx.beginPath();
+                ctx.moveTo(40, 10);
+                ctx.lineTo(40, 210);
+                ctx.lineTo(280, 210);
+                ctx.stroke();
+                
+                // Draw grid lines
+                ctx.strokeStyle = '#e0e0e0';
+                for (let i = 0; i < 5; i++) {
+                    ctx.beginPath();
+                    ctx.moveTo(40, 10 + i * 50);
+                    ctx.lineTo(280, 10 + i * 50);
+                    ctx.stroke();
+                }
+                
+                // Draw sample data points
+                const points = [
+                    {x: 80, y: 100},
+                    {x: 120, y: 80},
+                    {x: 160, y: 110},
+                    {x: 200, y: 90},
+                    {x: 240, y: 105}
+                ];
+                
+                ctx.fillStyle = '#667eea';
+                points.forEach(point => {
+                    ctx.beginPath();
+                    ctx.arc(point.x, point.y, 5, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+                
+                // Add labels
+                ctx.fillStyle = '#666';
+                ctx.font = '12px Arial';
+                ctx.fillText('120/80', 5, 110);
+                ctx.fillText('110/70', 5, 160);
+            }
+        });
+    </script>
 </body>
 </html>
