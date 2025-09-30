@@ -1,0 +1,58 @@
+```javascript
+// App.js
+import React from "react";
+import { View, Text, ScrollView, StyleSheet, Button, TouchableOpacity } from "react-native";
+
+export default function App() {
+  return (
+    <ScrollView style={styles.container}>
+      {/* Header */}
+      <Text style={styles.header}>Heart Beat per Minute</Text>
+      <Text style={styles.subHeader}>87 BPM</Text>
+
+      {/* Sections */}
+      <View style={styles.card}>
+        <Text style={styles.cardTitle}>My Day</Text>
+        <Text>Stress Monitor | Sleep Performance</Text>
+        <Text>Blood Pressure Insights | Tracking Health Calendar</Text>
+      </View>
+
+      {/* Shop Section */}
+      <View style={styles.card}>
+        <Text style={styles.cardTitle}>Neuro Drinks</Text>
+        <Text>Sugar Free - 29.99 AED</Text>
+        <Button title="Add to Cart" onPress={() => {}} />
+      </View>
+
+      <View style={styles.card}>
+        <Text style={styles.cardTitle}>Green Tea</Text>
+        <Text>Health beneficial - 22.99 AED</Text>
+        <Button title="Add to Cart" onPress={() => {}} />
+      </View>
+
+      {/* Membership */}
+      <View style={styles.card}>
+        <Text style={styles.cardTitle}>Membership Services</Text>
+        <Text>877 AED /yr (Save 33%)</Text>
+        <Text>Next Renewal: April 23, 2026</Text>
+        <Button title="Cancel Membership" onPress={() => {}} />
+      </View>
+
+      {/* Profile */}
+      <View style={styles.card}>
+        <Text style={styles.cardTitle}>Profile</Text>
+        <Text>Name | Gender | Birthday</Text>
+        <Button title="Edit Profile" onPress={() => {}} />
+      </View>
+    </ScrollView>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: { flex: 1, backgroundColor: "#fff", padding: 20 },
+  header: { fontSize: 24, fontWeight: "bold", marginBottom: 10 },
+  subHeader: { fontSize: 20, color: "red", marginBottom: 20 },
+  card: { backgroundColor: "#f5f5f5", padding: 15, marginBottom: 15, borderRadius: 10 },
+  cardTitle: { fontSize: 18, fontWeight: "bold", marginBottom: 5 },
+});
+```
