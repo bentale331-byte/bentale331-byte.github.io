@@ -19,7 +19,6 @@
             justify-content: center;
             align-items: center;
             padding: 20px;
-
         }
 
         .phone-container {
@@ -79,7 +78,6 @@
         }
 
         /* Home Screen */
-        
         .home-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -116,98 +114,303 @@
 
         /* Heart Rate Display */
         .heart-rate-display {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            background: #0a1628;
             color: white;
             padding: 40px 20px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .heart-rate-display::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 150px;
+            background: radial-gradient(ellipse at top, rgba(34, 197, 94, 0.3), transparent);
+            pointer-events: none;
+        }
+
+        .heart-rate-display::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 150px;
+            background: radial-gradient(ellipse at bottom, rgba(34, 197, 94, 0.2), transparent);
+            pointer-events: none;
+        }
+
+        .heart-icon-container {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .heart-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 0 30px rgba(34, 197, 94, 0.5);
+        }
+
+        .heart-icon svg {
+            width: 50px;
+            height: 50px;
+            fill: none;
+            stroke: white;
+            stroke-width: 2;
+        }
+
+        .ecg-line {
+            position: absolute;
+            right: -150px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .ecg-line svg {
+            width: 400px;
+            height: 100px;
         }
 
         .bpm-value {
             font-size: 72px;
             font-weight: bold;
-            margin: 20px 0;
+            margin: 20px 0 10px 0;
+            position: relative;
+            z-index: 1;
         }
 
         .bpm-label {
             font-size: 24px;
             opacity: 0.9;
+            position: relative;
+            z-index: 1;
         }
 
         .chart-container {
             padding: 20px;
-            background: white;
+            background: #0a1628;
+            position: relative;
         }
 
         .chart {
             width: 100%;
-            height: 200px;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            padding: 10px;
-            position: rela  tive;
+            height: 280px;
+            background: linear-gradient(to bottom, rgba(34, 197, 94, 0.1), transparent);
+            border: 2px solid rgba(34, 197, 94, 0.3);
+            border-radius: 15px;
+            padding: 20px;
+            position: relative;
+            box-shadow: 0 0 20px rgba(34, 197, 94, 0.2);
         }
 
-        .chart-bars {
-            display: flex;
-            align-items: flex-end;
-            justify-content: space-around;
-            height: 100%;
+        .chart-grid {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
         }
 
-        .bar {
-            width: 40px;
-            background: linear-gradient(to top, #667eea, #764ba2);
-            border-radius: 5px 5px 0 0;
-            transition: height 0.3s ease;
+        .grid-line {
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: rgba(34, 197, 94, 0.2);
+        }
+
+        .y-label {
+            position: absolute;
+            left: -5px;
+            color: #22c55e;
+            font-size: 14px;
+            transform: translateY(-50%);
+        }
+
+        .x-label {
+            position: absolute;
+            bottom: -25px;
+            color: #22c55e;
+            font-size: 12px;
+            transform: translateX(-50%);
+        }
+
+        .line-chart-svg {
+            position: absolute;
+            top: 20px;
+            left: 50px;
+            width: calc(100% - 70px);
+            height: calc(100% - 60px);
         }
 
         /* Products */
+        .products-header {
+            background: linear-gradient(90deg, #1a5f0f 0%, #2d8a1e 50%, #000000 100%);
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .products-header .star-icon {
+            font-size: 32px;
+        }
+
+        .search-container {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 25px;
+            padding: 8px 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .search-container input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .search-container input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .header-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .header-icon-btn {
+            background: none;
+            border: none;
+            color: #a5d93f;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
         .products-list {
             padding: 20px;
+            background: #0a1628;
+            min-height: calc(100% - 70px);
         }
 
         .product-card {
-            background: white;
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 15px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background: linear-gradient(135deg, #2d5f1e 0%, #1a4012 100%);
+            border-radius: 25px;
+            padding: 15px;
+            margin-bottom: 20px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            gap: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(165, 217, 63, 0.1) 0%, transparent 100%);
+            pointer-events: none;
+        }
+
+        .product-image-container {
+            background: linear-gradient(135deg, #8b9a88 0%, #6a7668 100%);
+            border-radius: 20px;
+            padding: 15px;
+            min-width: 140px;
+            height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-image-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .product-info {
+            flex: 1;
+            color: white;
+            position: relative;
+            z-index: 1;
         }
 
         .product-info h3 {
-            font-size: 18px;
-            margin-bottom: 5px;
-            color: #333;
+            font-size: 22px;
+            margin-bottom: 8px;
+            color: white;
+            font-weight: 600;
         }
 
         .product-info p {
-            font-size: 14px;
-            color: #666;
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.9);
             margin-bottom: 8px;
         }
 
         .product-price {
             font-size: 20px;
             font-weight: bold;
-            color: #667eea;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .product-details-icon {
+            color: #a5d93f;
+            font-size: 32px;
+            margin-top: 5px;
         }
 
         .add-to-cart-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: linear-gradient(135deg, #a5d93f 0%, #8bc34a 100%);
+            color: #1a4012;
             border: none;
-            padding: 10px 20px;
-            border-radius: 20px;
+            padding: 12px;
+            border-radius: 15px;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 28px;
             transition: transform 0.2s;
+            min-width: 80px;
+            height: 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(165, 217, 63, 0.3);
+            line-height: 1;
         }
 
         .add-to-cart-btn:hover {
             transform: scale(1.05);
+        }
+
+        .add-to-cart-btn:active {
+            transform: scale(0.95);
         }
 
         /* Cart */
@@ -406,9 +609,129 @@
         }
 
         /* Blood Pressure */
+        .bp-container {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 50%, #0a1628 100%);
+            min-height: 100%;
+            position: relative;
+        }
+
+        .bp-header-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 80px;
+            height: 80px;
+        }
+
         .bp-display {
-            padding: 40px 20px;
+            padding: 40px 20px 20px 20px;
             text-align: center;
+            color: white;
+        }
+
+        .bp-display h2 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        .bp-description {
+            color: white;
+            margin: 20px 0;
+            line-height: 1.6;
+            font-size: 15px;
+            padding: 0 10px;
+        }
+
+        .bp-info-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            background: white;
+            border-radius: 50%;
+            color: #22c55e;
+            font-size: 18px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        .scatter-plot-container {
+            margin: 30px 20px 20px 20px;
+            background: linear-gradient(135deg, #8b9a88 0%, #6a7668 100%);
+            border-radius: 25px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .scatter-plot {
+            width: 100%;
+            height: 400px;
+            background: #d4d4d4;
+            border-radius: 15px;
+            position: relative;
+            padding: 30px 20px 40px 60px;
+        }
+
+        .bp-grid {
+            position: absolute;
+            top: 30px;
+            left: 60px;
+            right: 20px;
+            bottom: 40px;
+        }
+
+        .bp-grid-line {
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: #999;
+        }
+
+        .bp-grid-line-vertical {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: #999;
+        }
+
+        .bp-y-label {
+            position: absolute;
+            left: -50px;
+            color: #333;
+            font-size: 16px;
+            font-weight: 600;
+            transform: translateY(-50%);
+        }
+
+        .bp-x-label {
+            position: absolute;
+            bottom: -30px;
+            color: #333;
+            font-size: 14px;
+            font-weight: 600;
+            transform: translateX(-50%);
+        }
+
+        .bp-data-point {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background: #3b82f6;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .bp-data-point:hover {
+            transform: translate(-50%, -50%) scale(1.3);
+            background: #2563eb;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
 
         .bp-value {
@@ -418,54 +741,309 @@
             margin: 20px 0;
         }
 
-        .scatter-plot {
-            width: 100%;
-            height: 300px;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            margin: 20px 0;
-            padding: 20px;
+        /* Sleep Performance */
+        .sleep-container {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100%;
             position: relative;
         }
 
-        /* Sleep Performance */
-        .sleep-display {
-            padding: 20px;
+        .sleep-header-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            animation: float 3s ease-in-out infinite;
         }
 
-        .sleep-hours {
-            text-align: center;
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .sleep-main-card {
+            margin: 80px 20px 20px 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
             padding: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .sleep-title-section {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .sleep-title-section h2 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .sleep-title-section p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .sleep-time-display {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .sleep-time-large {
+            font-size: 72px;
+            font-weight: bold;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border-radius: 20px;
-            margin-bottom: 20px;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 10px;
         }
 
-        .sleep-hours h2 {
-            font-size: 56px;
-            margin: 10px 0;
+        .sleep-time-label {
+            font-size: 16px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
-        .sleep-stages {
-            background: white;
-            border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .sleep-stage {
+        .sleep-quality-indicator {
             display: flex;
-            justify-content: space-between;
-            padding: 15px 0;
-            border-bottom: 1px solid #e0e0e0;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 30px;
         }
 
-        .sleep-stage:last-child {
-            border-bottom: none;
+        .quality-badge {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .quality-stars {
+            font-size: 24px;
+        }
+
+        .sleep-chart-wrapper {
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 20px;
+        }
+
+        .sleep-pie-chart {
+            width: 100%;
+            max-width: 280px;
+            height: 280px;
+            margin: 0 auto 20px;
+            position: relative;
+        }
+
+        .sleep-pie-chart canvas {
+            width: 100%;
+            height: 100%;
+        }
+
+        .sleep-stages-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .sleep-stage-item {
+            background: white;
+            padding: 15px;
+            border-radius: 15px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .sleep-stage-color {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin: 0 auto 10px;
+        }
+
+        .sleep-stage-item h4 {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .sleep-stage-item .percentage {
+            font-size: 24px;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .sleep-stage-item .duration {
+            font-size: 12px;
+            color: #999;
+        }
+
+        .sleep-tips {
+            margin-top: 20px;
+            padding: 20px;
+            background: linear-gradient(135deg, #e0e7ff 0%, #f3e8ff 100%);
+            border-radius: 15px;
+            border-left: 4px solid #667eea;
+        }
+
+        .sleep-tips h3 {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .sleep-tips ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sleep-tips li {
+            padding: 8px 0;
+            color: #555;
+            font-size: 14px;
+        }
+
+        .sleep-tips li:before {
+            content: "✓ ";
+            color: #22c55e;
+            font-weight: bold;
+            margin-right: 8px;
         }
 
         /* Stress Monitor */
+        .stress-container {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 50%, #0a1628 100%);
+            min-height: 100%;
+            position: relative;
+        }
+
+        .stress-header-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 80px;
+            height: 80px;
+        }
+
+        .stress-description {
+            padding: 40px 20px 20px 20px;
+            text-align: center;
+            color: white;
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
+        .stress-info-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            background: white;
+            border-radius: 50%;
+            color: #22c55e;
+            font-size: 18px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        .stress-gauge-container {
+            margin: 20px;
+            background: linear-gradient(135deg, #8b9a88 0%, #6a7668 100%);
+            border-radius: 25px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .stress-gauge-inner {
+            background: rgba(160, 160, 160, 0.5);
+            border-radius: 20px;
+            padding: 40px 30px;
+        }
+
+        .stress-score-display {
+            text-align: center;
+            font-size: 80px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .stress-gauge {
+            width: 100%;
+            max-width: 400px;
+            height: 280px;
+            margin: 0 auto 30px;
+            position: relative;
+        }
+
+        .stress-gauge canvas {
+            width: 100%;
+            height: 100%;
+        }
+
+        .stress-level-badge {
+            display: inline-block;
+            background: rgba(220, 220, 220, 0.8);
+            padding: 15px 50px;
+            border-radius: 30px;
+            font-size: 36px;
+            font-weight: bold;
+            color: #1e40af;
+            margin-top: 10px;
+        }
+
+        .stress-legend {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .stress-legend h3 {
+            color: white;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .stress-legend-item {
+            margin: 10px 0;
+            padding: 12px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .stress-legend-item .title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .stress-legend-item.low .title {
+            color: #3b82f6;
+        }
+
+        .stress-legend-item.medium .title {
+            color: #22c55e;
+        }
+
+        .stress-legend-item.high .title {
+            color: #f97316;
+        }
+
+        .stress-legend-item .description {
+            color: #333;
+            font-size: 14px;
+        }
+
         .stress-display {
             padding: 20px;
         }
@@ -520,6 +1098,7 @@
             cursor: pointer;
             transition: all 0.2s;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: relative;
         }
 
         .calendar-day:hover {
@@ -531,6 +1110,18 @@
         .calendar-day.today {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
+        }
+
+        .calendar-day.has-event::after {
+            content: '•';
+            position: absolute;
+            bottom: 2px;
+            font-size: 20px;
+            color: #22c55e;
+        }
+
+        .calendar-day.has-event.today::after {
+            color: #ffd700;
         }
 
         /* Bottom Navigation */
@@ -574,6 +1165,146 @@
             font-size: 10px;
         }
 
+        /* Chat Feature */
+        .chat-container {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            background: #0a1628;
+        }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .chat-message {
+            display: flex;
+            gap: 10px;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .chat-message.user {
+            flex-direction: row-reverse;
+        }
+
+        .chat-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .chat-message.bot .chat-avatar {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+        }
+
+        .chat-message.user .chat-avatar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .chat-bubble {
+            max-width: 70%;
+            padding: 12px 16px;
+            border-radius: 18px;
+            line-height: 1.4;
+        }
+
+        .chat-message.bot .chat-bubble {
+            background: linear-gradient(135deg, #2d5f1e 0%, #1a4012 100%);
+            color: white;
+            border-bottom-left-radius: 4px;
+        }
+
+        .chat-message.user .chat-bubble {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+
+        .chat-input-container {
+            padding: 15px 20px;
+            background: #1a2332;
+            border-top: 1px solid rgba(34, 197, 94, 0.2);
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .chat-input {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 25px;
+            padding: 12px 20px;
+            color: white;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .chat-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .chat-send-btn {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            border: none;
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s;
+        }
+
+        .chat-send-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .chat-send-btn:active {
+            transform: scale(0.95);
+        }
+
+        .quick-replies {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .quick-reply-btn {
+            background: rgba(34, 197, 94, 0.2);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            color: #22c55e;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .quick-reply-btn:hover {
+            background: rgba(34, 197, 94, 0.3);
+            transform: translateY(-2px);
+        }
+
         .remove-btn {
             background: #f5576c;
             color: white;
@@ -595,7 +1326,7 @@
                 <div class="home-card" onclick="showScreen('heartRate')">
                     <div class="icon">❤️</div>
                     <h3>Heart Rate</h3>
-                    <p style="font-size: 24px; color: #667eea; font-weight: bold;">87 BPM</p>
+                    <p style="font-size: 24px; color: white; font-weight: bold;">87 BPM</p>
                 </div>
                 <div class="home-card" onclick="showScreen('stress')">
                     <div class="icon">😌</div>
@@ -617,65 +1348,132 @@
                     <div class="icon">🥤</div>
                     <h3>Products</h3>
                 </div>
+                <div class="home-card" onclick="showScreen('chat')">
+                    <div class="icon">💬</div>
+                    <h3>Health Assistant</h3>
+                </div>
             </div>
         </div>
 
         <!-- Heart Rate Screen -->
         <div id="heartRate" class="screen">
-            <div class="header">
+            <div class="header" style="background: #0a1628;">
                 <button class="back-btn" onclick="showScreen('home')">←</button>
-                <h1>Heart Rate</h1>
                 <div style="width: 36px;"></div>
             </div>
             <div class="heart-rate-display">
+                <div class="heart-icon-container">
+                    <div class="heart-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke="white" fill="none" stroke-width="2"/>
+                            <path d="M2 10 L6 10 L8 6 L10 14 L12 10 L14 10" stroke="white" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="ecg-line">
+                        <svg viewBox="0 0 400 100" preserveAspectRatio="none">
+                            <path d="M0,50 L80,50 L90,30 L100,70 L110,20 L120,50 L400,50" 
+                                  stroke="#22c55e" 
+                                  fill="none" 
+                                  stroke-width="2.5"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                </div>
                 <div class="bpm-value">87</div>
                 <div class="bpm-label">BPM</div>
             </div>
             <div class="chart-container">
-                <h3 style="margin-bottom: 15px;">Daily Trend</h3>
                 <div class="chart">
-                    <div class="chart-bars">
-                        <div class="bar" style="height: 30%;"></div>
-                        <div class="bar" style="height: 50%;"></div>
-                        <div class="bar" style="height: 70%;"></div>
-                        <div class="bar" style="height: 90%;"></div>
-                        <div class="bar" style="height: 60%;"></div>
+                    <div class="chart-grid">
+                        <div class="grid-line" style="top: 0%;"><span class="y-label">40</span></div>
+                        <div class="grid-line" style="top: 25%;"><span class="y-label">30</span></div>
+                        <div class="grid-line" style="top: 50%;"><span class="y-label">20</span></div>
+                        <div class="grid-line" style="top: 75%;"><span class="y-label">10</span></div>
+                        <div class="grid-line" style="top: 100%;"><span class="y-label">0</span></div>
                     </div>
+                    <svg class="line-chart-svg" viewBox="0 0 500 200" preserveAspectRatio="none">
+                        <defs>
+                            <linearGradient id="lineGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#22c55e;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#16a34a;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <polyline
+                            points="0,145 100,110 200,90 300,120 400,25 500,20"
+                            fill="none"
+                            stroke="url(#lineGradient)"
+                            stroke-width="3"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"/>
+                        <circle cx="0" cy="145" r="5" fill="#22c55e"/>
+                        <circle cx="100" cy="110" r="5" fill="#22c55e"/>
+                        <circle cx="200" cy="90" r="5" fill="#22c55e"/>
+                        <circle cx="300" cy="120" r="5" fill="#22c55e"/>
+                        <circle cx="400" cy="25" r="5" fill="#22c55e"/>
+                        <circle cx="500" cy="20" r="5" fill="#22c55e"/>
+                    </svg>
+                    <span class="x-label" style="left: 15%;">Item 1</span>
+                    <span class="x-label" style="left: 30%;">Item 2</span>
+                    <span class="x-label" style="left: 45%;">Item 3</span>
+                    <span class="x-label" style="left: 60%;">Item 4</span>
+                    <span class="x-label" style="left: 85%;">Item 5</span>
                 </div>
             </div>
         </div>
 
         <!-- Products Screen -->
         <div id="products" class="screen">
-            <div class="header">
-                <button class="back-btn" onclick="showScreen('home')">←</button>
-                <h1>Products</h1>
-                <div style="width: 36px;"></div>
+            <div class="products-header">
+                <button class="back-btn" onclick="showScreen('home')" style="background: rgba(255,255,255,0.1);">←</button>
+                <span class="star-icon">✨</span>
+                <div class="search-container">
+                    <span style="font-size: 20px; color: white;">🔍</span>
+                    <input type="text" placeholder="Search products...">
+                </div>
+                <div class="header-icons">
+                    <button class="header-icon-btn">📋</button>
+                    <button class="header-icon-btn" onclick="showScreen('cart')">🛒</button>
+                </div>
             </div>
             <div class="products-list">
                 <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 150'%3E%3Crect fill='%23e74c3c' width='20' height='120' x='15' y='15' rx='8'/%3E%3Crect fill='%23e67e22' width='20' height='120' x='38' y='15' rx='8'/%3E%3Crect fill='%23f39c12' width='20' height='120' x='61' y='15' rx='8'/%3E%3Crect fill='%23f1c40f' width='20' height='120' x='84' y='15' rx='8'/%3E%3Crect fill='%2316a085' width='20' height='120' x='107' y='15' rx='8'/%3E%3Crect fill='%233498db' width='20' height='120' x='130' y='15' rx='8'/%3E%3Crect fill='%232980b9' width='20' height='120' x='153' y='15' rx='8'/%3E%3Crect fill='%239b59b6' width='20' height='120' x='176' y='15' rx='8'/%3E%3Ctext x='100' y='145' font-family='Arial' font-size='14' font-weight='bold' fill='white' text-anchor='middle'%3ENeuro%3C/text%3E%3C/svg%3E" alt="Neuro Drinks">
+                    </div>
                     <div class="product-info">
                         <h3>Neuro drinks</h3>
                         <p>sugar free drinks</p>
-                        <div class="product-price">29.99 AED</div>
+                        <div class="product-price">price : 29.99 AED</div>
+                        <div class="product-details-icon">📋</div>
                     </div>
-                    <button class="add-to-cart-btn" onclick="addToCart('Neuro drinks', 29.99, 'sugar free drinks')">Add to Cart</button>
+                    <button class="add-to-cart-btn" onclick="addToCart('Neuro drinks', 29.99, 'sugar free drinks')">🛒<span style="font-size: 20px;">+</span></button>
                 </div>
+                
                 <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 150'%3E%3Crect fill='%232d5f1e' width='110' height='120' x='45' y='15' rx='8'/%3E%3Ctext x='100' y='45' font-family='Arial' font-size='12' font-weight='bold' fill='white' text-anchor='middle'%3EORGANIC%3C/text%3E%3Ctext x='100' y='75' font-family='Arial' font-size='22' font-weight='bold' fill='white' text-anchor='middle'%3EGREEN%3C/text%3E%3Ctext x='100' y='100' font-family='Arial' font-size='18' font-weight='bold' fill='white' text-anchor='middle'%3ETEA BAGS%3C/text%3E%3Ccircle cx='65' cy='35' r='18' fill='white'/%3E%3Ctext x='65' y='42' font-family='Arial' font-size='12' font-weight='bold' fill='%232d5f1e' text-anchor='middle'%3E100%3C/text%3E%3Cellipse cx='130' cy='110' rx='20' ry='12' fill='%23d4a574'/%3E%3C/svg%3E" alt="Green Tea">
+                    </div>
                     <div class="product-info">
                         <h3>Green Tea</h3>
                         <p>Health beneficial</p>
-                        <div class="product-price">22.99 AED</div>
+                        <div class="product-price">price: 22.99 AED</div>
+                        <div class="product-details-icon">📋</div>
                     </div>
-                    <button class="add-to-cart-btn" onclick="addToCart('Green Tea', 22.99, 'Health beneficial')">Add to Cart</button>
+                    <button class="add-to-cart-btn" onclick="addToCart('Green Tea', 22.99, 'Health beneficial')">🛒<span style="font-size: 20px;">+</span></button>
                 </div>
+                
                 <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 150'%3E%3Crect fill='%23f1c40f' width='90' height='110' x='55' y='20' rx='8'/%3E%3Ccircle cx='70' cy='35' r='8' fill='%23e74c3c'/%3E%3Ccircle cx='130' cy='45' r='10' fill='%23e74c3c'/%3E%3Ccircle cx='75' cy='55' r='6' fill='%23e74c3c'/%3E%3Cellipse cx='105' cy='65' rx='18' ry='25' fill='%2395e06c' transform='rotate(-25 105 65)'/%3E%3Cellipse cx='120' cy='80' rx='12' ry='18' fill='%2395e06c' transform='rotate(15 120 80)'/%3E%3Ctext x='100' y='100' font-family='Arial' font-size='16' font-weight='bold' fill='%232d5f1e' text-anchor='middle'%3EMELON%3C/text%3E%3Ctext x='100' y='115' font-family='Arial' font-size='12' fill='%232d5f1e' text-anchor='middle'%3EREFRESHER%3C/text%3E%3C/svg%3E" alt="Melon Refresher">
+                    </div>
                     <div class="product-info">
                         <h3>Melon Refresher</h3>
                         <p>free of sugar</p>
-                        <div class="product-price">25.99 AED</div>
+                        <div class="product-price">price: 25.99 AED</div>
+                        <div class="product-details-icon">📋</div>
                     </div>
-                    <button class="add-to-cart-btn" onclick="addToCart('Melon Refresher', 25.99, 'free of sugar')">Add to Cart</button>
+                    <button class="add-to-cart-btn" onclick="addToCart('Melon Refresher', 25.99, 'free of sugar')">🛒<span style="font-size: 20px;">+</span></button>
                 </div>
             </div>
         </div>
@@ -882,51 +1680,116 @@
 
         <!-- Blood Pressure Screen -->
         <div id="bloodPressure" class="screen">
-            <div class="header">
-                <button class="back-btn" onclick="showScreen('home')">←</button>
-                <h1>Blood Pressure</h1>
-                <div style="width: 36px;"></div>
-            </div>
-            <div class="bp-display">
-                <h2>Blood Pressure Insights</h2>
-                <div class="bp-value">120/80</div>
-                <p style="color: #666; margin: 20px 0;">Wear your device to begin measuring blood pressure. Readings will appear as points on a scatter plot, helping you monitor trends and gain insights into your cardiovascular health over time.</p>
-                <div class="scatter-plot">
-                    <canvas id="bpChart" width="300" height="250"></canvas>
+            <div class="bp-container">
+                <div class="header" style="background: transparent;">
+                    <button class="back-btn" onclick="showScreen('home')">←</button>
+                    <h1>Blood Pressure Insights</h1>
+                    <div style="width: 36px;"></div>
+                </div>
+                
+                <div class="bp-header-icon">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="50" cy="65" r="20" fill="#0a1628" stroke="white" stroke-width="2"/>
+                        <path d="M50,30 Q35,45 50,65 Q65,45 50,30 Z" fill="#e74c3c"/>
+                        <path d="M35,50 L45,50 L50,40 L55,60 L60,50 L70,50" stroke="white" stroke-width="2" fill="none"/>
+                        <ellipse cx="45" cy="75" rx="8" ry="4" fill="#764ba2"/>
+                        <path d="M45,75 Q50,85 58,82" stroke="#764ba2" stroke-width="2" fill="none"/>
+                    </svg>
+                </div>
+                
+                <div class="bp-display">
+                    <p class="bp-description">
+                        Wear your device to begin measuring blood pressure. Readings will appear as points on a scatter plot, helping you monitor trends and gain insights into your cardiovascular health over time.
+                        <span class="bp-info-icon">i</span>
+                    </p>
+                </div>
+                
+                <div class="scatter-plot-container">
+                    <div class="scatter-plot" id="bpScatterPlot">
+                        <!-- Grid lines will be added by JavaScript -->
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Sleep Performance Screen -->
         <div id="sleep" class="screen">
-            <div class="header">
-                <button class="back-btn" onclick="showScreen('home')">←</button>
-                <h1>Sleep Performance</h1>
-                <div style="width: 36px;"></div>
-            </div>
-            <div class="sleep-display">
-                <div class="sleep-hours">
-                    <p>Last Night Sleep</p>
-                    <h2>8:54</h2>
-                    <p>Hours of sleep</p>
+            <div class="sleep-container">
+                <div class="header" style="background: rgba(102, 126, 234, 0.2); backdrop-filter: blur(10px);">
+                    <button class="back-btn" onclick="showScreen('home')">←</button>
+                    <h1 style="color: white;">Sleep Performance</h1>
+                    <div style="width: 36px;"></div>
                 </div>
-                <div class="sleep-stages">
-                    <h3 style="margin-bottom: 15px;">Sleep Stages</h3>
-                    <div class="sleep-stage">
-                        <span>Light</span>
-                        <strong>50%</strong>
+                
+                <div class="sleep-header-icon">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="50" cy="50" r="35" fill="white" opacity="0.9"/>
+                        <path d="M50,20 A30,30 0 0,1 70,50 A25,25 0 0,0 50,30 A25,25 0 0,0 30,50 A30,30 0 0,1 50,20 Z" fill="#667eea"/>
+                        <circle cx="45" cy="45" r="3" fill="white"/>
+                        <circle cx="60" cy="50" r="2" fill="white"/>
+                        <text x="75" y="30" font-family="Arial" font-size="16" fill="white" font-weight="bold">Z</text>
+                        <text x="82" y="22" font-family="Arial" font-size="12" fill="white" font-weight="bold">Z</text>
+                    </svg>
+                </div>
+                
+                <div class="sleep-main-card">
+                    <div class="sleep-title-section">
+                        <h2>Last Night's Sleep</h2>
+                        <p>Sleep quality analysis from your device</p>
                     </div>
-                    <div class="sleep-stage">
-                        <span>REM</span>
-                        <strong>24%</strong>
+                    
+                    <div class="sleep-time-display">
+                        <div class="sleep-time-large" id="sleepHoursDisplay">8:54</div>
+                        <div class="sleep-time-label">Total Sleep Time</div>
                     </div>
-                    <div class="sleep-stage">
-                        <span>SWS (DEEP)</span>
-                        <strong>21%</strong>
+                    
+                    <div class="sleep-quality-indicator">
+                        <div class="quality-badge">Excellent Sleep</div>
+                        <div class="quality-stars">⭐⭐⭐⭐⭐</div>
                     </div>
-                    <div class="sleep-stage">
-                        <span>Awake</span>
-                        <strong>5%</strong>
+                    
+                    <div class="sleep-chart-wrapper">
+                        <h3 style="text-align: center; color: #333; margin-bottom: 20px; font-size: 18px;">Sleep Stages Breakdown</h3>
+                        <div class="sleep-pie-chart">
+                            <canvas id="sleepPieChartNew"></canvas>
+                        </div>
+                        
+                        <div class="sleep-stages-list">
+                            <div class="sleep-stage-item">
+                                <div class="sleep-stage-color" style="background: #a8b5e6;"></div>
+                                <h4>Light Sleep</h4>
+                                <div class="percentage">50%</div>
+                                <div class="duration">4h 27m</div>
+                            </div>
+                            <div class="sleep-stage-item">
+                                <div class="sleep-stage-color" style="background: #e64db8;"></div>
+                                <h4>Deep Sleep</h4>
+                                <div class="percentage">21%</div>
+                                <div class="duration">1h 52m</div>
+                            </div>
+                            <div class="sleep-stage-item">
+                                <div class="sleep-stage-color" style="background: #9b7bb5;"></div>
+                                <h4>REM Sleep</h4>
+                                <div class="percentage">24%</div>
+                                <div class="duration">2h 8m</div>
+                            </div>
+                            <div class="sleep-stage-item">
+                                <div class="sleep-stage-color" style="background: #e8e8e8;"></div>
+                                <h4>Awake</h4>
+                                <div class="percentage">5%</div>
+                                <div class="duration">27m</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="sleep-tips">
+                        <h3>💡 Sleep Tips for Better Rest</h3>
+                        <ul>
+                            <li>Maintain consistent sleep schedule</li>
+                            <li>Keep bedroom cool and dark</li>
+                            <li>Avoid screens 1 hour before bed</li>
+                            <li>Limit caffeine after 2 PM</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -934,31 +1797,56 @@
 
         <!-- Stress Monitor Screen -->
         <div id="stress" class="screen">
-            <div class="header">
-                <button class="back-btn" onclick="showScreen('home')">←</button>
-                <h1>Stress Monitor</h1>
-                <div style="width: 36px;"></div>
-            </div>
-            <div class="stress-display">
-                <div class="stress-meter">
-                    <h3>Stress Score</h3>
-                    <div class="stress-score">1.0</div>
-                    <p>Medium</p>
+            <div class="stress-container">
+                <div class="header" style="background: transparent;">
+                    <button class="back-btn" onclick="showScreen('home')">←</button>
+                    <h1>Stress Monitor</h1>
+                    <div style="width: 36px;"></div>
                 </div>
-                <div class="stress-info">
-                    <h3 style="margin-bottom: 15px;">Understanding Stress</h3>
-                    <p style="color: #666; line-height: 1.6; margin-bottom: 20px;">Stress is the body's natural response to a physical or mental challenge. It's a measure of how alert or activated your body is at any given time.</p>
-                    <div style="background: #f5f5f5; padding: 15px; border-radius: 10px; margin-bottom: 10px;">
-                        <strong>0.0-0.9 - Low</strong>
-                        <p style="color: #666; font-size: 14px; margin-top: 5px;">You may be feeling calm, relaxed or sleepy.</p>
+                
+                <div class="stress-header-icon">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <ellipse cx="50" cy="60" rx="30" ry="35" fill="#0a1628"/>
+                        <path d="M35,45 Q30,35 35,30 M65,45 Q70,35 65,30" stroke="#0a1628" stroke-width="3" fill="none"/>
+                        <path d="M30,55 Q50,45 70,55" stroke="white" stroke-width="2" fill="none"/>
+                        <circle cx="40" cy="45" r="3" fill="white"/>
+                        <circle cx="60" cy="45" r="3" fill="white"/>
+                        <path d="M40,25 L35,15 M50,22 L50,10 M60,25 L65,15" stroke="#0a1628" stroke-width="3"/>
+                    </svg>
+                </div>
+                
+                <div class="stress-description">
+                    Stress is the body's natural response to a physical or mental challenge. It's a measure of how alert or activated your body is at any given time.
+                    <span class="stress-info-icon">i</span>
+                </div>
+                
+                <div class="stress-gauge-container">
+                    <div class="stress-gauge-inner">
+                        <div class="stress-score-display" id="stressScoreValue">1.0</div>
+                        
+                        <div class="stress-gauge">
+                            <canvas id="stressGaugeCanvas"></canvas>
+                        </div>
+                        
+                        <div style="text-align: center;">
+                            <div class="stress-level-badge" id="stressLevelLabel">Medium</div>
+                        </div>
                     </div>
-                    <div style="background: #fff3cd; padding: 15px; border-radius: 10px; margin-bottom: 10px;">
-                        <strong>1.0-1.9 - Medium</strong>
-                        <p style="color: #666; font-size: 14px; margin-top: 5px;">You may be feeling neutral, alert or mildly activated.</p>
-                    </div>
-                    <div style="background: #f8d7da; padding: 15px; border-radius: 10px;">
-                        <strong>2.0-3.0 - High</strong>
-                        <p style="color: #666; font-size: 14px; margin-top: 5px;">You may be feeling excited, stressed or highly activated.</p>
+                    
+                    <div class="stress-legend">
+                        <h3>Stress Score</h3>
+                        <div class="stress-legend-item low">
+                            <div class="title">0.0-0.9-low</div>
+                            <div class="description">You may be feeling calm relaxed or sleepy.</div>
+                        </div>
+                        <div class="stress-legend-item medium">
+                            <div class="title">1.0-1.9-medium</div>
+                            <div class="description">You may be feeling neutral alert or mildly activated.</div>
+                        </div>
+                        <div class="stress-legend-item high">
+                            <div class="title">2.0-3.0-high</div>
+                            <div class="description">You may be feeling excited stressed or highly activated.</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -973,39 +1861,70 @@
             </div>
             <div class="calendar-container">
                 <div class="calendar-header">
-                    <button style="background: none; border: none; font-size: 24px; cursor: pointer;">←</button>
-                    <h2>May 2026</h2>
-                    <button style="background: none; border: none; font-size: 24px; cursor: pointer;">→</button>
+                    <button style="background: none; border: none; font-size: 24px; cursor: pointer;" onclick="changeMonth(-1)">←</button>
+                    <h2 id="calendarMonth">May 2026</h2>
+                    <button style="background: none; border: none; font-size: 24px; cursor: pointer;" onclick="changeMonth(1)">→</button>
                 </div>
-                <div class="calendar-grid">
-                    <div class="calendar-day">1</div>
-                    <div class="calendar-day today">2</div>
-                    <div class="calendar-day">3</div>
-                    <div class="calendar-day">4</div>
-                    <div class="calendar-day">5</div>
-                    <div class="calendar-day">6</div>
-                    <div class="calendar-day">7</div>
-                    <div class="calendar-day">8</div>
-                    <div class="calendar-day">9</div>
-                    <div class="calendar-day">10</div>
-                    <div class="calendar-day">11</div>
-                    <div class="calendar-day">12</div>
-                    <div class="calendar-day">13</div>
-                    <div class="calendar-day">14</div>
-                    <div class="calendar-day">15</div>
-                    <div class="calendar-day">16</div>
-                    <div class="calendar-day">17</div>
-                    <div class="calendar-day">18</div>
-                    <div class="calendar-day">19</div>
-                    <div class="calendar-day">20</div>
-                    <div class="calendar-day">21</div>
-                    <div class="calendar-day">22</div>
-                    <div class="calendar-day">23</div>
-                    <div class="calendar-day">24</div>
+                <div class="calendar-grid" id="calendarGrid">
+                    <div class="calendar-day" onclick="showDayDetails(1, false)">1</div>
+                    <div class="calendar-day today" onclick="showDayDetails(2, true)">2</div>
+                    <div class="calendar-day" onclick="showDayDetails(3, false)">3</div>
+                    <div class="calendar-day has-event" onclick="showDayDetails(4, false, true)">4</div>
+                    <div class="calendar-day" onclick="showDayDetails(5, false)">5</div>
+                    <div class="calendar-day" onclick="showDayDetails(6, false)">6</div>
+                    <div class="calendar-day" onclick="showDayDetails(7, false)">7</div>
+                    <div class="calendar-day has-event" onclick="showDayDetails(8, false, true)">8</div>
+                    <div class="calendar-day" onclick="showDayDetails(9, false)">9</div>
+                    <div class="calendar-day" onclick="showDayDetails(10, false)">10</div>
+                    <div class="calendar-day" onclick="showDayDetails(11, false)">11</div>
+                    <div class="calendar-day" onclick="showDayDetails(12, false)">12</div>
+                    <div class="calendar-day" onclick="showDayDetails(13, false)">13</div>
+                    <div class="calendar-day" onclick="showDayDetails(14, false)">14</div>
+                    <div class="calendar-day has-event" onclick="showDayDetails(15, false, true)">15</div>
+                    <div class="calendar-day" onclick="showDayDetails(16, false)">16</div>
+                    <div class="calendar-day" onclick="showDayDetails(17, false)">17</div>
+                    <div class="calendar-day" onclick="showDayDetails(18, false)">18</div>
+                    <div class="calendar-day" onclick="showDayDetails(19, false)">19</div>
+                    <div class="calendar-day" onclick="showDayDetails(20, false)">20</div>
+                    <div class="calendar-day" onclick="showDayDetails(21, false)">21</div>
+                    <div class="calendar-day has-event" onclick="showDayDetails(22, false, true)">22</div>
+                    <div class="calendar-day" onclick="showDayDetails(23, false)">23</div>
+                    <div class="calendar-day" onclick="showDayDetails(24, false)">24</div>
                 </div>
                 <div style="margin-top: 20px; padding: 20px; background: white; border-radius: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
                     <h3 style="margin-bottom: 10px;">Event Reminder</h3>
-                    <p style="color: #666;">No events scheduled</p>
+                    <p style="color: #666;" id="eventReminder">Click on a date to view details</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chat Screen -->
+        <div id="chat" class="screen">
+            <div class="header" style="background: linear-gradient(135deg, #1a5f0f 0%, #0a1628 100%);">
+                <button class="back-btn" onclick="showScreen('home')">←</button>
+                <h1>Health Assistant</h1>
+                <div style="width: 36px;"></div>
+            </div>
+            <div class="chat-container">
+                <div class="chat-messages" id="chatMessages">
+                    <div class="chat-message bot">
+                        <div class="chat-avatar">🤖</div>
+                        <div>
+                            <div class="chat-bubble">
+                                Hello! I'm your Health Assistant. How can I help you today?
+                            </div>
+                            <div class="quick-replies">
+                                <button class="quick-reply-btn" onclick="sendQuickReply('Heart rate info')">❤️ Heart Rate</button>
+                                <button class="quick-reply-btn" onclick="sendQuickReply('Sleep tips')">😴 Sleep Tips</button>
+                                <button class="quick-reply-btn" onclick="sendQuickReply('Stress management')">😌 Stress Help</button>
+                                <button class="quick-reply-btn" onclick="sendQuickReply('Nutrition advice')">🥗 Nutrition</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-input-container">
+                    <input type="text" class="chat-input" id="chatInput" placeholder="Ask about your health..." onkeypress="handleChatKeyPress(event)">
+                    <button class="chat-send-btn" onclick="sendMessage()">➤</button>
                 </div>
             </div>
         </div>
@@ -1016,13 +1935,13 @@
                 <div class="nav-icon">🏠</div>
                 <div class="nav-label">Home</div>
             </div>
+            <div class="nav-item" onclick="showScreen('chat')">
+                <div class="nav-icon">💬</div>
+                <div class="nav-label">Chat</div>
+            </div>
             <div class="nav-item" onclick="showScreen('coupons')">
                 <div class="nav-icon">🎫</div>
                 <div class="nav-label">Coupons</div>
-            </div>
-            <div class="nav-item" onclick="showScreen('cart')">
-                <div class="nav-icon">🛒</div>
-                <div class="nav-label">Cart</div>
             </div>
             <div class="nav-item" onclick="showScreen('profile')">
                 <div class="nav-icon">👤</div>
@@ -1038,12 +1957,73 @@
     <script>
         let cart = [];
 
+        // Calendar functionality - Define globally
+        const healthEvents = {
+            4: { type: 'Workout', description: 'Morning yoga session - 30 minutes', icon: '🧘' },
+            8: { type: 'Checkup', description: 'Doctor appointment at 10:00 AM', icon: '👨‍⚕️' },
+            15: { type: 'Medication', description: 'Refill prescription reminder', icon: '💊' },
+            22: { type: 'Exercise', description: 'Gym session - Cardio day', icon: '🏃' }
+        };
+
+        function showDayDetails(day, isToday, hasEvent) {
+            const monthName = document.getElementById('calendarMonth').textContent;
+            let message = `📅 ${monthName} ${day}\n\n`;
+            
+            if (isToday) {
+                message += '🌟 TODAY\n\n';
+            }
+            
+            if (hasEvent && healthEvents[day]) {
+                const event = healthEvents[day];
+                message += `${event.icon} ${event.type}\n${event.description}\n\n`;
+                message += '✅ Would you like to set a reminder?';
+            } else {
+                message += 'Health Summary:\n';
+                message += `• Heart Rate: 87 BPM\n`;
+                message += `• Sleep: 8:54 hours\n`;
+                message += `• Stress Level: Medium\n\n`;
+                message += 'No scheduled events for this day.';
+            }
+            
+            alert(message);
+            
+            // Update event reminder section
+            const reminderEl = document.getElementById('eventReminder');
+            if (hasEvent && healthEvents[day]) {
+                const event = healthEvents[day];
+                reminderEl.innerHTML = `<strong>${event.icon} ${event.type} - ${monthName} ${day}</strong><br>${event.description}`;
+            } else {
+                reminderEl.textContent = `Selected: ${monthName} ${day} - No events scheduled`;
+            }
+        }
+
+        function changeMonth(direction) {
+            const months = ['January', 'February', 'March', 'April', 'May', 'June', 
+                          'July', 'August', 'September', 'October', 'November', 'December'];
+            const currentMonth = document.getElementById('calendarMonth').textContent;
+            const [monthName, year] = currentMonth.split(' ');
+            let monthIndex = months.indexOf(monthName);
+            let currentYear = parseInt(year);
+            
+            monthIndex += direction;
+            
+            if (monthIndex < 0) {
+                monthIndex = 11;
+                currentYear--;
+            } else if (monthIndex > 11) {
+                monthIndex = 0;
+                currentYear++;
+            }
+            
+            document.getElementById('calendarMonth').textContent = `${months[monthIndex]} ${currentYear}`;
+            document.getElementById('eventReminder').textContent = 'Click on a date to view details';
+        }
+
         function showScreen(screenId) {
             const screens = document.querySelectorAll('.screen');
             screens.forEach(screen => screen.classList.remove('active'));
             document.getElementById(screenId).classList.add('active');
             
-            // Update bottom nav active state
             const navItems = document.querySelectorAll('.nav-item');
             navItems.forEach(item => item.classList.remove('active'));
         }
@@ -1100,7 +2080,75 @@
             updateCart();
         }
 
-        // Initialize blood pressure chart
+        // Chat functionality
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            
+            if (message === '') return;
+            
+            addChatMessage(message, 'user');
+            input.value = '';
+            
+            setTimeout(() => {
+                const response = getBotResponse(message);
+                addChatMessage(response, 'bot');
+            }, 500);
+        }
+
+        function sendQuickReply(message) {
+            addChatMessage(message, 'user');
+            
+            setTimeout(() => {
+                const response = getBotResponse(message);
+                addChatMessage(response, 'bot');
+            }, 500);
+        }
+
+        function addChatMessage(text, sender) {
+            const messagesContainer = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `chat-message ${sender}`;
+            
+            const avatar = sender === 'bot' ? '🤖' : '👤';
+            
+            messageDiv.innerHTML = `
+                <div class="chat-avatar">${avatar}</div>
+                <div class="chat-bubble">${text}</div>
+            `;
+            
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function getBotResponse(message) {
+            const lowerMessage = message.toLowerCase();
+            
+            if (lowerMessage.includes('heart') || lowerMessage.includes('bpm')) {
+                return "Your current heart rate is 87 BPM, which is within the normal range for adults (60-100 BPM). A healthy heart rate indicates good cardiovascular fitness. Would you like tips on maintaining a healthy heart?";
+            } else if (lowerMessage.includes('sleep')) {
+                return "Getting quality sleep is crucial for your health. Here are some tips: maintain a consistent sleep schedule, avoid screens 1 hour before bed, keep your bedroom cool and dark, and aim for 7-9 hours of sleep each night. Your last sleep session showed 8:54 hours - that's great!";
+            } else if (lowerMessage.includes('stress')) {
+                return "Your current stress level is 1.0 (Medium). To manage stress, try: deep breathing exercises, regular physical activity, meditation, adequate sleep, and talking to friends or professionals. Would you like me to guide you through a quick breathing exercise?";
+            } else if (lowerMessage.includes('nutrition') || lowerMessage.includes('diet') || lowerMessage.includes('food')) {
+                return "Good nutrition is essential for overall health. Focus on: eating plenty of fruits and vegetables, staying hydrated with water, choosing whole grains, limiting processed foods, and maintaining balanced meals. Check out our Products section for healthy drink options!";
+            } else if (lowerMessage.includes('blood pressure') || lowerMessage.includes('bp')) {
+                return "Your blood pressure reading is 120/80 mmHg, which is considered normal. Maintain this by: reducing sodium intake, regular exercise, maintaining healthy weight, limiting alcohol, and managing stress. Regular monitoring is important!";
+            } else if (lowerMessage.includes('exercise') || lowerMessage.includes('workout')) {
+                return "Regular exercise is vital for health! Adults should aim for: 150 minutes of moderate aerobic activity per week, strength training 2+ days a week, and daily stretching. Start slowly and gradually increase intensity. Always consult your doctor before starting a new exercise program.";
+            } else if (lowerMessage.includes('water') || lowerMessage.includes('hydration')) {
+                return "Staying hydrated is crucial! Aim to drink 8-10 glasses (about 2 liters) of water daily. Signs of good hydration: clear or light yellow urine, moist lips, and feeling energized. Increase intake during exercise or hot weather.";
+            } else {
+                return "I'm here to help with your health questions! You can ask me about heart rate, sleep, stress management, nutrition, blood pressure, exercise, or general wellness tips. How can I assist you today?";
+            }
+        }
+
+        function handleChatKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
         window.addEventListener('load', function() {
             const canvas = document.getElementById('bpChart');
             if (canvas) {
@@ -1108,14 +2156,12 @@
                 ctx.strokeStyle = '#667eea';
                 ctx.fillStyle = '#667eea';
                 
-                // Draw axes
                 ctx.beginPath();
                 ctx.moveTo(40, 10);
                 ctx.lineTo(40, 210);
                 ctx.lineTo(280, 210);
                 ctx.stroke();
                 
-                // Draw grid lines
                 ctx.strokeStyle = '#e0e0e0';
                 for (let i = 0; i < 5; i++) {
                     ctx.beginPath();
@@ -1124,7 +2170,6 @@
                     ctx.stroke();
                 }
                 
-                // Draw sample data points
                 const points = [
                     {x: 80, y: 100},
                     {x: 120, y: 80},
@@ -1140,13 +2185,426 @@
                     ctx.fill();
                 });
                 
-                // Add labels
                 ctx.fillStyle = '#666';
                 ctx.font = '12px Arial';
                 ctx.fillText('120/80', 5, 110);
                 ctx.fillText('110/70', 5, 160);
             }
+            
+            // Initialize Blood Pressure Scatter Plot
+            initBPScatterPlot();
+            
+            // Initialize Sleep Pie Chart
+            initSleepPieChart();
+            initSleepPieChartNew();
+            
+            // Initialize Stress Gauge
+            initStressGauge();
         });
+
+        function initSleepPieChartNew() {
+            const canvas = document.getElementById('sleepPieChartNew');
+            if (!canvas) return;
+            
+            canvas.width = 280;
+            canvas.height = 280;
+            
+            const ctx = canvas.getContext('2d');
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            const radius = Math.min(centerX, centerY) - 20;
+            
+            // Sleep data
+            const sleepData = [
+                { label: 'Light', percentage: 50, color: '#a8b5e6', angle: 0 },
+                { label: 'Awake', percentage: 5, color: '#e8e8e8', angle: 0 },
+                { label: 'REM', percentage: 24, color: '#9b7bb5', angle: 0 },
+                { label: 'Deep', percentage: 21, color: '#e64db8', angle: 0 }
+            ];
+            
+            // Calculate angles
+            let currentAngle = -Math.PI / 2;
+            sleepData.forEach(segment => {
+                segment.startAngle = currentAngle;
+                const segmentAngle = (segment.percentage / 100) * 2 * Math.PI;
+                segment.endAngle = currentAngle + segmentAngle;
+                currentAngle = segment.endAngle;
+            });
+            
+            // Draw pie chart with shadow
+            ctx.shadowColor = 'rgba(0, 0, 0, 0.1)';
+            ctx.shadowBlur = 10;
+            ctx.shadowOffsetX = 0;
+            ctx.shadowOffsetY = 5;
+            
+            sleepData.forEach(segment => {
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY);
+                ctx.arc(centerX, centerY, radius, segment.startAngle, segment.endAngle);
+                ctx.closePath();
+                ctx.fillStyle = segment.color;
+                ctx.fill();
+            });
+            
+            // Reset shadow
+            ctx.shadowColor = 'transparent';
+            ctx.shadowBlur = 0;
+            
+            // Draw white borders between segments
+            sleepData.forEach(segment => {
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY);
+                ctx.arc(centerX, centerY, radius, segment.startAngle, segment.endAngle);
+                ctx.closePath();
+                ctx.strokeStyle = '#fff';
+                ctx.lineWidth = 3;
+                ctx.stroke();
+            });
+            
+            // Make canvas interactive
+            canvas.addEventListener('click', function(e) {
+                const rect = canvas.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                const distance = Math.sqrt(x * x + y * y);
+                
+                if (distance <= radius) {
+                    let angle = Math.atan2(y, x);
+                    if (angle < -Math.PI / 2) angle += 2 * Math.PI;
+                    
+                    sleepData.forEach(segment => {
+                        let startAngle = segment.startAngle;
+                        let endAngle = segment.endAngle;
+                        
+                        if (startAngle < -Math.PI / 2) startAngle += 2 * Math.PI;
+                        if (endAngle < -Math.PI / 2) endAngle += 2 * Math.PI;
+                        
+                        if (angle >= startAngle && angle <= endAngle) {
+                            showSleepStageInfo(segment);
+                        }
+                    });
+                }
+            });
+        }
+
+        function initStressGauge() {
+            const canvas = document.getElementById('stressGaugeCanvas');
+            if (!canvas) return;
+            
+            // Set canvas size for better resolution
+            canvas.width = 400;
+            canvas.height = 280;
+            
+            const ctx = canvas.getContext('2d');
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height - 30;
+            const radius = Math.min(canvas.width, canvas.height) * 0.85;
+            
+            const stressValue = 1.0; // Current stress value
+            
+            // Draw gauge arc
+            const startAngle = Math.PI;
+            const endAngle = 2 * Math.PI;
+            
+            // Draw background arc
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, radius * 0.65, startAngle, endAngle);
+            ctx.lineWidth = 40;
+            ctx.strokeStyle = '#d0d0d0';
+            ctx.stroke();
+            
+            // Draw colored gauge arc
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, radius * 0.65, startAngle, endAngle);
+            ctx.lineWidth = 40;
+            ctx.strokeStyle = '#22c55e';
+            ctx.stroke();
+            
+            // Draw tick marks and labels for 0, 1, 2, 3
+            ctx.fillStyle = '#333';
+            ctx.font = 'bold 18px Arial';
+            ctx.textAlign = 'center';
+            ctx.strokeStyle = '#333';
+            ctx.lineWidth = 3;
+            
+            for (let i = 0; i <= 3; i++) {
+                const angle = Math.PI + (i / 3.0) * Math.PI;
+                
+                // Draw tick mark
+                const tickStart = radius * 0.52;
+                const tickEnd = radius * 0.48;
+                const tickX1 = centerX + Math.cos(angle) * tickStart;
+                const tickY1 = centerY + Math.sin(angle) * tickStart;
+                const tickX2 = centerX + Math.cos(angle) * tickEnd;
+                const tickY2 = centerY + Math.sin(angle) * tickEnd;
+                
+                ctx.beginPath();
+                ctx.moveTo(tickX1, tickY1);
+                ctx.lineTo(tickX2, tickY2);
+                ctx.stroke();
+                
+                // Draw label
+                const labelRadius = radius * 0.75;
+                const labelX = centerX + Math.cos(angle) * labelRadius;
+                const labelY = centerY + Math.sin(angle) * labelRadius;
+                
+                ctx.fillText(i + '.0', labelX, labelY + 5);
+            }
+            
+            // Calculate needle angle based on stress value (0.0 to 3.0)
+            const needleAngle = Math.PI + (stressValue / 3.0) * Math.PI;
+            
+            // Draw needle
+            const needleLength = radius * 0.58;
+            const needleX = centerX + Math.cos(needleAngle) * needleLength;
+            const needleY = centerY + Math.sin(needleAngle) * needleLength;
+            
+            ctx.beginPath();
+            ctx.moveTo(centerX, centerY);
+            ctx.lineTo(needleX, needleY);
+            ctx.lineWidth = 12;
+            ctx.strokeStyle = '#2d5f1e';
+            ctx.lineCap = 'round';
+            ctx.stroke();
+            
+            // Draw center circle
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, 15, 0, 2 * Math.PI);
+            ctx.fillStyle = '#2d5f1e';
+            ctx.fill();
+            
+            // Make gauge interactive
+            canvas.addEventListener('click', function() {
+                showStressDetails(stressValue);
+            });
+        }
+
+        function showStressDetails(value) {
+            let level = '';
+            let description = '';
+            let tips = '';
+            
+            if (value < 1.0) {
+                level = 'Low';
+                description = 'You may be feeling calm, relaxed or sleepy.';
+                tips = 'This is a good stress level. Continue your current healthy habits!';
+            } else if (value < 2.0) {
+                level = 'Medium';
+                description = 'You may be feeling neutral, alert or mildly activated.';
+                tips = 'Your stress level is moderate. Consider taking breaks and practicing relaxation techniques.';
+            } else {
+                level = 'High';
+                description = 'You may be feeling excited, stressed or highly activated.';
+                tips = 'Your stress level is elevated. Try deep breathing, meditation, or talking to someone you trust.';
+            }
+            
+            const message = `Stress Level: ${level}\nScore: ${value}\n\n${description}\n\nTip: ${tips}`;
+            alert(message);
+        }
+
+        function initSleepPieChart() {
+            const canvas = document.getElementById('sleepPieChart');
+            if (!canvas) return;
+            
+            const ctx = canvas.getContext('2d');
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            const radius = Math.min(centerX, centerY) - 20;
+            
+            // Sleep data
+            const sleepData = [
+                { label: 'Light', percentage: 50, color: '#a8b5e6', angle: 0 },
+                { label: 'Awake', percentage: 5, color: '#e8e8e8', angle: 0 },
+                { label: 'REM', percentage: 24, color: '#9b7bb5', angle: 0 },
+                { label: 'SWS (DEEP)', percentage: 21, color: '#e64db8', angle: 0 }
+            ];
+            
+            // Calculate angles
+            let currentAngle = -Math.PI / 2; // Start at top
+            sleepData.forEach(segment => {
+                segment.startAngle = currentAngle;
+                const segmentAngle = (segment.percentage / 100) * 2 * Math.PI;
+                segment.endAngle = currentAngle + segmentAngle;
+                currentAngle = segment.endAngle;
+            });
+            
+            // Draw pie chart
+            sleepData.forEach(segment => {
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY);
+                ctx.arc(centerX, centerY, radius, segment.startAngle, segment.endAngle);
+                ctx.closePath();
+                ctx.fillStyle = segment.color;
+                ctx.fill();
+                ctx.strokeStyle = '#fff';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+            });
+            
+            // Add labels
+            sleepData.forEach(segment => {
+                const midAngle = (segment.startAngle + segment.endAngle) / 2;
+                const labelRadius = radius * 0.7;
+                const labelX = centerX + Math.cos(midAngle) * labelRadius;
+                const labelY = centerY + Math.sin(midAngle) * labelRadius;
+                
+                ctx.fillStyle = '#333';
+                ctx.font = 'bold 14px Arial';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                
+                // Draw label text
+                const lines = segment.label.split(' ');
+                lines.forEach((line, i) => {
+                    ctx.fillText(line, labelX, labelY + (i - lines.length/2 + 0.5) * 16);
+                });
+                
+                // Draw percentage
+                ctx.font = 'bold 12px Arial';
+                ctx.fillText(segment.percentage + '%', labelX, labelY + 20);
+            });
+            
+            // Make canvas interactive
+            canvas.addEventListener('click', function(e) {
+                const rect = canvas.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const dx = x - centerX;
+                const dy = y - centerY;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                if (distance <= radius) {
+                    let angle = Math.atan2(dy, dx);
+                    if (angle < -Math.PI / 2) angle += 2 * Math.PI;
+                    
+                    sleepData.forEach(segment => {
+                        let startAngle = segment.startAngle;
+                        let endAngle = segment.endAngle;
+                        
+                        if (startAngle < -Math.PI / 2) startAngle += 2 * Math.PI;
+                        if (endAngle < -Math.PI / 2) endAngle += 2 * Math.PI;
+                        
+                        if (angle >= startAngle && angle <= endAngle) {
+                            showSleepStageInfo(segment);
+                        }
+                    });
+                }
+            });
+        }
+
+        function showSleepStageInfo(segment) {
+            const totalMinutes = 8 * 60 + 54; // 8:54 hours
+            const stageMinutes = Math.round((segment.percentage / 100) * totalMinutes);
+            const hours = Math.floor(stageMinutes / 60);
+            const minutes = stageMinutes % 60;
+            
+            let info = `${segment.label}\n\n`;
+            info += `Percentage: ${segment.percentage}%\n`;
+            info += `Duration: ${hours}h ${minutes}m\n\n`;
+            
+            if (segment.label === 'Light') {
+                info += 'Light sleep is important for memory consolidation and physical recovery.';
+            } else if (segment.label === 'REM') {
+                info += 'REM sleep is crucial for emotional regulation, memory, and learning.';
+            } else if (segment.label === 'SWS (DEEP)') {
+                info += 'Deep sleep is essential for physical restoration and immune system support.';
+            } else if (segment.label === 'Awake') {
+                info += 'Brief awakenings are normal during the night.';
+            }
+            
+            alert(info);
+        }
+
+        function initBPScatterPlot() {
+            const plot = document.getElementById('bpScatterPlot');
+            if (!plot) return;
+            
+            // Create grid
+            const grid = document.createElement('div');
+            grid.className = 'bp-grid';
+            
+            // Horizontal grid lines with labels
+            const yValues = [
+                { value: '120/80', position: 25 },
+                { value: '110/70', position: 75 }
+            ];
+            
+            yValues.forEach(item => {
+                const line = document.createElement('div');
+                line.className = 'bp-grid-line';
+                line.style.top = item.position + '%';
+                
+                const label = document.createElement('span');
+                label.className = 'bp-y-label';
+                label.textContent = item.value;
+                line.appendChild(label);
+                
+                grid.appendChild(line);
+            });
+            
+            // Vertical grid lines with labels
+            const xValues = [0, 10, 20, 30, 40];
+            xValues.forEach((value, index) => {
+                const line = document.createElement('div');
+                line.className = 'bp-grid-line-vertical';
+                line.style.left = (index * 25) + '%';
+                
+                const label = document.createElement('span');
+                label.className = 'bp-x-label';
+                label.textContent = value;
+                line.appendChild(label);
+                
+                grid.appendChild(line);
+            });
+            
+            plot.appendChild(grid);
+            
+            // Sample data points - [x position %, y position %, reading]
+            const dataPoints = [
+                // 120/80 readings (upper line)
+                { x: 12, y: 25, reading: '120/80', date: 'Jan 1' },
+                { x: 18, y: 25, reading: '120/80', date: 'Jan 3' },
+                { x: 24, y: 25, reading: '121/81', date: 'Jan 5' },
+                { x: 30, y: 25, reading: '119/79', date: 'Jan 7' },
+                { x: 35, y: 25, reading: '120/80', date: 'Jan 9' },
+                { x: 40, y: 25, reading: '120/80', date: 'Jan 11' },
+                { x: 45, y: 25, reading: '122/82', date: 'Jan 13' },
+                { x: 50, y: 25, reading: '120/80', date: 'Jan 15' },
+                { x: 55, y: 25, reading: '120/80', date: 'Jan 17' },
+                { x: 60, y: 25, reading: '121/80', date: 'Jan 19' },
+                { x: 65, y: 25, reading: '120/80', date: 'Jan 21' },
+                { x: 70, y: 25, reading: '120/80', date: 'Jan 23' },
+                { x: 75, y: 25, reading: '119/80', date: 'Jan 25' },
+                { x: 80, y: 25, reading: '120/80', date: 'Jan 27' },
+                
+                // 110/70 readings (lower line)
+                { x: 25, y: 75, reading: '110/70', date: 'Jan 4' },
+                { x: 31, y: 75, reading: '111/71', date: 'Jan 8' },
+                { x: 36, y: 75, reading: '110/70', date: 'Jan 10' },
+                { x: 52, y: 75, reading: '110/70', date: 'Jan 16' },
+                { x: 72, y: 75, reading: '110/70', date: 'Jan 24' }
+            ];
+            
+            dataPoints.forEach(point => {
+                const dot = document.createElement('div');
+                dot.className = 'bp-data-point';
+                dot.style.left = point.x + '%';
+                dot.style.top = point.y + '%';
+                dot.title = `${point.reading} - ${point.date}`;
+                
+                dot.onclick = function() {
+                    showBPReading(point.reading, point.date);
+                };
+                
+                plot.appendChild(dot);
+            });
+        }
+
+        function showBPReading(reading, date) {
+            alert(`Blood Pressure: ${reading}\nDate: ${date}\n\nThis reading is within the normal range. Keep up the healthy lifestyle!`);
+        }
     </script>
 </body>
 </html>
