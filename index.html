@@ -190,6 +190,55 @@
             z-index: 1;
         }
 
+        .bpm-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .control-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .control-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        .control-btn:active {
+            transform: scale(0.95);
+        }
+
+        .reset-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 15px;
+        }
+
+        .reset-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
         .bpm-label {
             font-size: 24px;
             opacity: 0.9;
@@ -457,6 +506,48 @@
         }
 
         /* Profile */
+        /* Account Screen */
+        .account-container {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            min-height: 100%;
+        }
+
+        .account-content {
+            padding: 20px;
+        }
+
+        .account-field {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+        }
+
+        .account-field label {
+            display: block;
+            font-size: 12px;
+            color: #22c55e;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .account-field input {
+            width: 100%;
+            border: none;
+            font-size: 16px;
+            color: #e0e0e0;
+            background: transparent;
+        }
+
+        /* App Settings */
+        .app-settings-container {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            min-height: 100%;
+        }
+
         .profile-content {
             padding: 20px;
         }
@@ -504,34 +595,46 @@
         }
 
         /* Settings */
+        .settings-container {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            min-height: 100%;
+        }
+
         .settings-list {
             padding: 20px;
         }
 
         .settings-item {
-            background: white;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
             border-radius: 10px;
             padding: 15px 20px;
             margin-bottom: 10px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
             display: flex;
             justify-content: space-between;
             align-items: center;
             cursor: pointer;
-            transition: background 0.2s;
+            transition: all 0.2s;
+            border: 1px solid rgba(34, 197, 94, 0.2);
         }
 
         .settings-item:hover {
-            background: #f5f5f5;
+            background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+            border-color: rgba(34, 197, 94, 0.4);
+            transform: translateX(5px);
         }
 
         .settings-item span {
             font-size: 16px;
-            color: #333;
+            color: #22c55e;
         }
 
         .settings-item .arrow {
-            color: #999;
+            color: #22c55e;
+        }
+
+        .settings-item.danger span {
+            color: #f87171;
         }
 
         /* Membership */
@@ -565,47 +668,78 @@
         /* Coupons */
         .coupons-container {
             padding: 20px;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            min-height: 100%;
         }
 
         .points-balance {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #1a1a1a 0%, #22c55e 100%);
             border-radius: 20px;
             padding: 30px;
             color: white;
             text-align: center;
             margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(34, 197, 94, 0.3);
+            border: 2px solid rgba(34, 197, 94, 0.5);
         }
 
         .points-value {
             font-size: 64px;
             font-weight: bold;
             margin: 10px 0;
+            text-shadow: 0 0 20px rgba(34, 197, 94, 0.5);
         }
 
         .coupon-card {
-            background: white;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
             border-radius: 15px;
             padding: 20px;
             margin-bottom: 15px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            transition: all 0.2s;
+        }
+
+        .coupon-card:hover {
+            border-color: rgba(34, 197, 94, 0.6);
+            transform: translateY(-3px);
         }
 
         .coupon-discount {
             font-size: 32px;
             font-weight: bold;
-            color: #667eea;
+            color: #22c55e;
+            text-shadow: 0 0 10px rgba(34, 197, 94, 0.3);
+        }
+
+        .coupon-card p {
+            color: #a0a0a0;
         }
 
         .apply-btn {
-            background: #667eea;
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
             color: white;
             border: none;
             padding: 10px 25px;
             border-radius: 20px;
             cursor: pointer;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(34, 197, 94, 0.3);
+            transition: all 0.2s;
+        }
+
+        .apply-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(34, 197, 94, 0.5);
+        }
+
+        .coupons-title {
+            color: #22c55e;
+            margin: 20px 0 10px 0;
+            font-size: 18px;
         }
 
         /* Blood Pressure */
@@ -889,6 +1023,190 @@
             color: #999;
         }
 
+        /* Points System */
+        .points-screen-container {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #ea580c 100%);
+            min-height: 100%;
+            position: relative;
+        }
+
+        .points-trophy-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .points-main-display {
+            padding: 80px 20px 20px 20px;
+            text-align: center;
+        }
+
+        .points-circle {
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .points-circle::before {
+            content: '';
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            border: 3px dashed rgba(255, 255, 255, 0.5);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .points-number {
+            font-size: 64px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #fbbf24 0%, #ea580c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .points-label {
+            font-size: 16px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .add-points-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            color: white;
+            border: none;
+            font-size: 32px;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(34, 197, 94, 0.4);
+            transition: all 0.3s;
+            margin: 20px auto;
+            display: block;
+        }
+
+        .add-points-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .add-points-btn:active {
+            transform: scale(0.95);
+        }
+
+        .points-activities {
+            margin: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            padding: 25px;
+        }
+
+        .points-activities h3 {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .activity-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 15px;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .activity-item:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+        }
+
+        .activity-info {
+            flex: 1;
+        }
+
+        .activity-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .activity-desc {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .activity-points {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .points-history {
+            margin: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            padding: 25px;
+        }
+
+        .points-history h3 {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .history-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .history-item:last-child {
+            border-bottom: none;
+        }
+
+        .history-activity {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .history-points {
+            font-weight: bold;
+            color: #22c55e;
+        }
+
         .sleep-tips {
             margin-top: 20px;
             padding: 20px;
@@ -1004,7 +1322,71 @@
             margin-top: 10px;
         }
 
-        .stress-legend {
+        .stress-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .stress-control-btn {
+            background: rgba(255, 255, 255, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            color: #333;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .stress-control-btn:hover {
+            background: rgba(255, 255, 255, 0.5);
+            transform: scale(1.1);
+        }
+
+        .stress-control-btn:active {
+            transform: scale(0.95);
+        }
+
+        .sleep-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .sleep-control-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(102, 126, 234, 0.3);
+        }
+
+        .sleep-control-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .sleep-control-btn:active {
+            transform: scale(0.95);
+        }
+
+        .legend {
             margin-top: 30px;
             text-align: center;
         }
@@ -1136,20 +1518,20 @@
             border-top: 1px solid #e0e0e0;
             display: flex;
             justify-content: space-around;
-            padding: 10px 0;
+            padding: 6px 0;
         }
 
         .nav-item {
             text-align: center;
             cursor: pointer;
-            padding: 5px 15px;
+            padding: 3px 10px;
             transition: all 0.2s;
             flex: 1;
         }
 
         .nav-item:hover {
             background: #f5f5f5;
-            border-radius: 10px;
+            border-radius: 8px;
         }
 
         .nav-item.active {
@@ -1157,12 +1539,12 @@
         }
 
         .nav-icon {
-            font-size: 24px;
-            margin-bottom: 5px;
+            font-size: 20px;
+            margin-bottom: 2px;
         }
 
         .nav-label {
-            font-size: 10px;
+            font-size: 9px;
         }
 
         /* Chat Feature */
@@ -1352,6 +1734,10 @@
                     <div class="icon">💬</div>
                     <h3>Health Assistant</h3>
                 </div>
+                <div class="home-card" onclick="showScreen('coupons')">
+                    <div class="icon">🎫</div>
+                    <h3>Coupons & Offers</h3>
+                </div>
             </div>
         </div>
 
@@ -1380,8 +1766,13 @@
                         </svg>
                     </div>
                 </div>
-                <div class="bpm-value">87</div>
+                <div class="bpm-value" id="heartRateValue">87</div>
                 <div class="bpm-label">BPM</div>
+                <div class="bpm-controls">
+                    <button class="control-btn" onclick="adjustHeartRate(-5)">−</button>
+                    <button class="control-btn" onclick="adjustHeartRate(5)">+</button>
+                </div>
+                <button class="reset-btn" onclick="resetHeartRate()">Reset to Normal</button>
             </div>
             <div class="chart-container">
                 <div class="chart">
@@ -1531,52 +1922,56 @@
 
         <!-- Settings Screen -->
         <div id="settings" class="screen">
-            <div class="header">
-                <button class="back-btn" onclick="showScreen('home')">←</button>
-                <h1>Settings</h1>
-                <div style="width: 36px;"></div>
-            </div>
-            <div class="settings-list">
-                <div class="settings-item" onclick="showScreen('account')">
-                    <span>My Account</span>
-                    <span class="arrow">→</span>
+            <div class="settings-container">
+                <div class="header" style="background: linear-gradient(135deg, #0a0a0a 0%, #22c55e 100%);">
+                    <button class="back-btn" onclick="showScreen('home')">←</button>
+                    <h1>Settings</h1>
+                    <div style="width: 36px;"></div>
                 </div>
-                <div class="settings-item" onclick="showScreen('membership')">
-                    <span>Membership Services</span>
-                    <span class="arrow">→</span>
-                </div>
-                <div class="settings-item" onclick="showScreen('appSettings')">
-                    <span>App Settings</span>
-                    <span class="arrow">→</span>
-                </div>
-                <div class="settings-item" onclick="alert('Logged out')">
-                    <span style="color: #f5576c;">Log out</span>
-                </div>
-                <div class="settings-item" onclick="alert('Account deleted')">
-                    <span style="color: #f5576c;">Delete Account</span>
+                <div class="settings-list">
+                    <div class="settings-item" onclick="showScreen('account')">
+                        <span>My Account</span>
+                        <span class="arrow">→</span>
+                    </div>
+                    <div class="settings-item" onclick="showScreen('membership')">
+                        <span>Membership Services</span>
+                        <span class="arrow">→</span>
+                    </div>
+                    <div class="settings-item" onclick="showScreen('appSettings')">
+                        <span>App Settings</span>
+                        <span class="arrow">→</span>
+                    </div>
+                    <div class="settings-item danger" onclick="alert('Logged out')">
+                        <span>Log out</span>
+                    </div>
+                    <div class="settings-item danger" onclick="alert('Account deleted')">
+                        <span>Delete Account</span>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Account Screen -->
         <div id="account" class="screen">
-            <div class="header">
-                <button class="back-btn" onclick="showScreen('settings')">←</button>
-                <h1>My Account</h1>
-                <div style="width: 36px;"></div>
-            </div>
-            <div class="profile-content">
-                <div class="profile-field">
-                    <label>Email</label>
-                    <input type="email" value="johndoe@example.com" readonly>
+            <div class="account-container">
+                <div class="header" style="background: linear-gradient(135deg, #0a0a0a 0%, #22c55e 100%);">
+                    <button class="back-btn" onclick="showScreen('settings')">←</button>
+                    <h1>My Account</h1>
+                    <div style="width: 36px;"></div>
                 </div>
-                <div class="profile-field">
-                    <label>Password</label>
-                    <input type="password" value="********" readonly>
-                </div>
-                <div class="profile-field">
-                    <label>Phone Number</label>
-                    <input type="tel" value="+971 50 123 4567" readonly>
+                <div class="account-content">
+                    <div class="account-field">
+                        <label>Email</label>
+                        <input type="email" value="johndoe@example.com" readonly>
+                    </div>
+                    <div class="account-field">
+                        <label>Password</label>
+                        <input type="password" value="********" readonly>
+                    </div>
+                    <div class="account-field">
+                        <label>Phone Number</label>
+                        <input type="tel" value="+971 50 123 4567" readonly>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1622,34 +2017,36 @@
 
         <!-- App Settings Screen -->
         <div id="appSettings" class="screen">
-            <div class="header">
-                <button class="back-btn" onclick="showScreen('settings')">←</button>
-                <h1>App Settings</h1>
-                <div style="width: 36px;"></div>
-            </div>
-            <div class="settings-list">
-                <div class="settings-item">
-                    <span>Camera</span>
-                    <span class="arrow">→</span>
+            <div class="app-settings-container">
+                <div class="header" style="background: linear-gradient(135deg, #0a0a0a 0%, #22c55e 100%);">
+                    <button class="back-btn" onclick="showScreen('settings')">←</button>
+                    <h1>App Settings</h1>
+                    <div style="width: 36px;"></div>
                 </div>
-                <div class="settings-item">
-                    <span>Location</span>
-                    <span class="arrow">→</span>
-                </div>
-                <div class="settings-item">
-                    <span>Notification</span>
-                    <span class="arrow">→</span>
-                </div>
-                <div class="settings-item">
-                    <span>Language</span>
-                    <span class="arrow">→</span>
+                <div class="settings-list">
+                    <div class="settings-item">
+                        <span>Camera</span>
+                        <span class="arrow">→</span>
+                    </div>
+                    <div class="settings-item">
+                        <span>Location</span>
+                        <span class="arrow">→</span>
+                    </div>
+                    <div class="settings-item">
+                        <span>Notification</span>
+                        <span class="arrow">→</span>
+                    </div>
+                    <div class="settings-item">
+                        <span>Language</span>
+                        <span class="arrow">→</span>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Coupons Screen -->
         <div id="coupons" class="screen">
-            <div class="header">
+            <div class="header" style="background: linear-gradient(135deg, #0a0a0a 0%, #22c55e 100%);">
                 <button class="back-btn" onclick="showScreen('home')">←</button>
                 <h1>Coupons</h1>
                 <div style="width: 36px;"></div>
@@ -1660,18 +2057,25 @@
                     <div class="points-value">174</div>
                     <p style="font-size: 14px; opacity: 0.9;">45% of next reward</p>
                 </div>
-                <h3 style="margin: 20px 0 10px 0;">Coupon Offers</h3>
+                <h3 class="coupons-title">🎫 Available Offers</h3>
                 <div class="coupon-card">
                     <div>
                         <div class="coupon-discount">15.0% off</div>
-                        <p style="font-size: 12px; color: #666; margin-top: 5px;">Get 15% off at checkout when you buy 10 drinks</p>
+                        <p style="font-size: 12px; margin-top: 5px;">Get 15% off at checkout when you buy 10 drinks</p>
                     </div>
                     <button class="apply-btn">Apply</button>
                 </div>
                 <div class="coupon-card">
                     <div>
                         <div class="coupon-discount">20.0% off</div>
-                        <p style="font-size: 12px; color: #666; margin-top: 5px;">Enjoy 20% off your entire order when you spend 300 AED or more</p>
+                        <p style="font-size: 12px; margin-top: 5px;">Enjoy 20% off your entire order when you spend 300 AED or more</p>
+                    </div>
+                    <button class="apply-btn">Apply</button>
+                </div>
+                <div class="coupon-card">
+                    <div>
+                        <div class="coupon-discount">Free Shipping</div>
+                        <p style="font-size: 12px; margin-top: 5px;">Get free shipping on all orders over 150 AED</p>
                     </div>
                     <button class="apply-btn">Apply</button>
                 </div>
@@ -1741,6 +2145,10 @@
                     <div class="sleep-time-display">
                         <div class="sleep-time-large" id="sleepHoursDisplay">8:54</div>
                         <div class="sleep-time-label">Total Sleep Time</div>
+                        <div class="sleep-controls">
+                            <button class="sleep-control-btn" onclick="adjustSleep(-15)">−</button>
+                            <button class="sleep-control-btn" onclick="adjustSleep(15)">+</button>
+                        </div>
                     </div>
                     
                     <div class="sleep-quality-indicator">
@@ -1830,6 +2238,10 @@
                         
                         <div style="text-align: center;">
                             <div class="stress-level-badge" id="stressLevelLabel">Medium</div>
+                            <div class="stress-controls">
+                                <button class="stress-control-btn" onclick="adjustStress(-0.1)">−</button>
+                                <button class="stress-control-btn" onclick="adjustStress(0.1)">+</button>
+                            </div>
                         </div>
                     </div>
                     
@@ -1956,6 +2368,132 @@
 
     <script>
         let cart = [];
+        let healthPoints = 174;
+        let currentHeartRate = 87;
+        let currentStressLevel = 1.0;
+        let currentSleepMinutes = 534; // 8:54 = 534 minutes
+        let pointsHistory = [
+            { activity: 'Good Sleep (8h 54m)', points: 15, time: 'Today' },
+            { activity: 'Stay Hydrated', points: 10, time: 'Today' },
+            { activity: 'Complete Workout', points: 20, time: 'Yesterday' }
+        ];
+
+        // Heart Rate Controls
+        function adjustHeartRate(change) {
+            currentHeartRate += change;
+            if (currentHeartRate < 40) currentHeartRate = 40;
+            if (currentHeartRate > 200) currentHeartRate = 200;
+            updateHeartRateDisplay();
+        }
+
+        function resetHeartRate() {
+            currentHeartRate = 87;
+            updateHeartRateDisplay();
+        }
+
+        function updateHeartRateDisplay() {
+            document.getElementById('heartRateValue').textContent = currentHeartRate;
+            const homeDisplay = document.querySelector('.home-card p[style*="24px"]');
+            if (homeDisplay) {
+                homeDisplay.innerHTML = `<span style="font-size: 24px; color: white; font-weight: bold;">${currentHeartRate} BPM</span>`;
+            }
+        }
+
+        // Sleep Controls
+        function adjustSleep(minutes) {
+            currentSleepMinutes += minutes;
+            if (currentSleepMinutes < 0) currentSleepMinutes = 0;
+            if (currentSleepMinutes > 720) currentSleepMinutes = 720; // Max 12 hours
+            updateSleepDisplay();
+        }
+
+        function updateSleepDisplay() {
+            const hours = Math.floor(currentSleepMinutes / 60);
+            const minutes = currentSleepMinutes % 60;
+            const timeString = `${hours}:${minutes.toString().padStart(2, '0')}`;
+            document.getElementById('sleepHoursDisplay').textContent = timeString;
+        }
+
+        // Stress Controls
+        function adjustStress(change) {
+            currentStressLevel += change;
+            if (currentStressLevel < 0) currentStressLevel = 0;
+            if (currentStressLevel > 3) currentStressLevel = 3;
+            currentStressLevel = Math.round(currentStressLevel * 10) / 10; // Round to 1 decimal
+            updateStressDisplay();
+        }
+
+        function updateStressDisplay() {
+            document.getElementById('stressScoreValue').textContent = currentStressLevel.toFixed(1);
+            
+            let level = '';
+            if (currentStressLevel < 1.0) {
+                level = 'Low';
+            } else if (currentStressLevel < 2.0) {
+                level = 'Medium';
+            } else {
+                level = 'High';
+            }
+            document.getElementById('stressLevelLabel').textContent = level;
+            
+            // Redraw gauge
+            initStressGauge();
+        }
+
+        // Points functionality
+        function completeActivity(activityType, points) {
+            const activities = {
+                'workout': '💪 Complete Workout',
+                'sleep': '😴 Good Sleep',
+                'water': '💧 Stay Hydrated',
+                'meditation': '🧘 Meditation',
+                'steps': '🚶 Daily Steps',
+                'healthymeal': '🥗 Healthy Meal'
+            };
+            
+            const confirmed = confirm(`Complete "${activities[activityType]}"?\n\nYou will earn +${points} points!`);
+            
+            if (confirmed) {
+                healthPoints += points;
+                updatePointsDisplay();
+                
+                // Add to history
+                pointsHistory.unshift({
+                    activity: activities[activityType],
+                    points: points,
+                    time: 'Just now'
+                });
+                
+                updatePointsHistory();
+                
+                alert(`🎉 Congratulations!\n\nYou earned ${points} points!\nTotal Points: ${healthPoints}`);
+            }
+        }
+
+        function showAddPointsMenu() {
+            alert('💡 Tip: Complete health activities below to earn points!\n\nPoints can be redeemed for:\n• Product discounts\n• Premium features\n• Health rewards\n\nClick on any activity to start earning!');
+        }
+
+        function updatePointsDisplay() {
+            document.getElementById('totalPoints').textContent = healthPoints;
+            document.getElementById('homePointsDisplay').textContent = healthPoints;
+        }
+
+        function updatePointsHistory() {
+            const historyContainer = document.getElementById('pointsHistory');
+            let html = '';
+            
+            pointsHistory.slice(0, 5).forEach(item => {
+                html += `
+                    <div class="history-item">
+                        <span class="history-activity">${item.activity}</span>
+                        <span class="history-points">+${item.points}</span>
+                    </div>
+                `;
+            });
+            
+            historyContainer.innerHTML = html;
+        }
 
         // Calendar functionality - Define globally
         const healthEvents = {
@@ -2301,7 +2839,10 @@
             const centerY = canvas.height - 30;
             const radius = Math.min(canvas.width, canvas.height) * 0.85;
             
-            const stressValue = 1.0; // Current stress value
+            const stressValue = currentStressLevel; // Use current stress value
+            
+            // Clear canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
             
             // Draw gauge arc
             const startAngle = Math.PI;
@@ -2375,9 +2916,9 @@
             ctx.fill();
             
             // Make gauge interactive
-            canvas.addEventListener('click', function() {
+            canvas.onclick = function() {
                 showStressDetails(stressValue);
-            });
+            };
         }
 
         function showStressDetails(value) {
