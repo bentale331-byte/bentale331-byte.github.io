@@ -254,21 +254,21 @@
 
         .chart {
             width: 100%;
-            height: 280px;
+            height: 200px;
             background: linear-gradient(to bottom, rgba(34, 197, 94, 0.1), transparent);
             border: 2px solid rgba(34, 197, 94, 0.3);
             border-radius: 15px;
-            padding: 20px;
+            padding: 15px;
             position: relative;
             box-shadow: 0 0 20px rgba(34, 197, 94, 0.2);
         }
 
         .chart-grid {
             position: absolute;
-            top: 20px;
-            left: 20px;
-            right: 20px;
-            bottom: 20px;
+            top: 15px;
+            left: 15px;
+            right: 15px;
+            bottom: 15px;
         }
 
         .grid-line {
@@ -283,24 +283,71 @@
             position: absolute;
             left: -5px;
             color: #22c55e;
-            font-size: 14px;
+            font-size: 11px;
             transform: translateY(-50%);
         }
 
         .x-label {
             position: absolute;
-            bottom: -25px;
+            bottom: -20px;
             color: #22c55e;
-            font-size: 12px;
+            font-size: 10px;
             transform: translateX(-50%);
         }
 
         .line-chart-svg {
             position: absolute;
-            top: 20px;
-            left: 50px;
-            width: calc(100% - 70px);
-            height: calc(100% - 60px);
+            top: 15px;
+            left: 40px;
+            width: calc(100% - 55px);
+            height: calc(100% - 40px);
+        }
+
+        .bpm-input-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .bpm-input {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 18px;
+            width: 100px;
+            text-align: center;
+            outline: none;
+        }
+
+        .bpm-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .set-btn {
+            background: rgba(34, 197, 94, 0.8);
+            border: 2px solid rgba(34, 197, 94, 1);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 600;
+        }
+
+        .set-btn:hover {
+            background: rgba(34, 197, 94, 1);
+            transform: scale(1.05);
+        }
+
+        .set-btn:active {
+            transform: scale(0.95);
         }
 
         /* Products */
@@ -314,6 +361,16 @@
 
         .products-header .star-icon {
             font-size: 32px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .products-header .star-icon:hover {
+            transform: scale(1.2) rotate(15deg);
+        }
+
+        .products-header .star-icon:active {
+            transform: scale(0.9);
         }
 
         .search-container {
@@ -553,7 +610,7 @@
         }
 
         .profile-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a4012 100%);
             padding: 30px 20px;
             text-align: center;
             color: white;
@@ -563,12 +620,14 @@
             width: 100px;
             height: 100px;
             border-radius: 50%;
-            background: white;
+            background: linear-gradient(135deg, #0a0a0a 0%, #22c55e 100%);
             margin: 0 auto 15px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 48px;
+            border: 3px solid #22c55e;
+            box-shadow: 0 0 20px rgba(34, 197, 94, 0.4);
         }
 
         .profile-field {
@@ -670,6 +729,39 @@
             padding: 20px;
             background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
             min-height: 100%;
+            position: relative;
+        }
+
+        .congrats-flash {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            color: #0a0a0a;
+            padding: 30px 50px;
+            border-radius: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            z-index: 9999;
+            box-shadow: 0 10px 40px rgba(255, 215, 0, 0.6);
+            animation: flashAnimation 1s ease-in-out;
+            text-align: center;
+        }
+
+        @keyframes flashAnimation {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.5);
+            }
+            50% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.1);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.8);
+            }
         }
 
         .points-balance {
@@ -866,6 +958,66 @@
             transform: translate(-50%, -50%) scale(1.3);
             background: #2563eb;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .bp-input-container {
+            text-align: center;
+            margin-top: 30px;
+            padding: 0 20px;
+        }
+
+        .bp-input-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .bp-input {
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid #22c55e;
+            color: #333;
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-size: 18px;
+            width: 140px;
+            text-align: center;
+            outline: none;
+            font-weight: bold;
+        }
+
+        .bp-input::placeholder {
+            color: #999;
+            font-weight: normal;
+        }
+
+        .bp-set-btn {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            border: none;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(34, 197, 94, 0.3);
+        }
+
+        .bp-set-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(34, 197, 94, 0.5);
+        }
+
+        .bp-set-btn:active {
+            transform: scale(0.95);
+        }
+
+        .bp-input-label {
+            color: white;
+            font-size: 14px;
+            margin-bottom: 10px;
         }
 
         .bp-value {
@@ -1354,6 +1506,52 @@
             transform: scale(0.95);
         }
 
+        .stress-input-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .stress-input {
+            background: rgba(255, 255, 255, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            color: #333;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 18px;
+            width: 100px;
+            text-align: center;
+            outline: none;
+            font-weight: bold;
+        }
+
+        .stress-input::placeholder {
+            color: rgba(0, 0, 0, 0.4);
+        }
+
+        .stress-set-btn {
+            background: rgba(34, 197, 94, 0.8);
+            border: 2px solid rgba(34, 197, 94, 1);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 600;
+        }
+
+        .stress-set-btn:hover {
+            background: rgba(34, 197, 94, 1);
+            transform: scale(1.05);
+        }
+
+        .stress-set-btn:active {
+            transform: scale(0.95);
+        }
+
         .sleep-controls {
             display: flex;
             justify-content: center;
@@ -1362,7 +1560,7 @@
         }
 
         .sleep-control-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
             border: none;
             color: white;
             width: 45px;
@@ -1375,7 +1573,7 @@
             align-items: center;
             justify-content: center;
             font-weight: bold;
-            box-shadow: 0 4px 10px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 4px 10px rgba(34, 197, 94, 0.3);
         }
 
         .sleep-control-btn:hover {
@@ -1518,20 +1716,20 @@
             border-top: 1px solid #e0e0e0;
             display: flex;
             justify-content: space-around;
-            padding: 6px 0;
+            padding: 2px 0;
         }
 
         .nav-item {
             text-align: center;
             cursor: pointer;
-            padding: 3px 10px;
+            padding: 1px 6px;
             transition: all 0.2s;
             flex: 1;
         }
 
         .nav-item:hover {
             background: #f5f5f5;
-            border-radius: 8px;
+            border-radius: 4px;
         }
 
         .nav-item.active {
@@ -1539,12 +1737,13 @@
         }
 
         .nav-icon {
-            font-size: 20px;
-            margin-bottom: 2px;
+            font-size: 16px;
+            margin-bottom: 0px;
         }
 
         .nav-label {
-            font-size: 9px;
+            font-size: 7px;
+            line-height: 1;
         }
 
         /* Chat Feature */
@@ -1702,7 +1901,7 @@
         <!-- Home Screen -->
         <div id="home" class="screen active">
             <div class="header">
-                <h1>My Day</h1>
+                <h1>Energy Drink Monitoring</h1>
             </div>
             <div class="home-grid">
                 <div class="home-card" onclick="showScreen('heartRate')">
@@ -1777,38 +1976,43 @@
             <div class="chart-container">
                 <div class="chart">
                     <div class="chart-grid">
-                        <div class="grid-line" style="top: 0%;"><span class="y-label">40</span></div>
-                        <div class="grid-line" style="top: 25%;"><span class="y-label">30</span></div>
-                        <div class="grid-line" style="top: 50%;"><span class="y-label">20</span></div>
-                        <div class="grid-line" style="top: 75%;"><span class="y-label">10</span></div>
-                        <div class="grid-line" style="top: 100%;"><span class="y-label">0</span></div>
+                        <div class="grid-line" style="top: 0%;"><span class="y-label">160</span></div>
+                        <div class="grid-line" style="top: 20%;"><span class="y-label">140</span></div>
+                        <div class="grid-line" style="top: 40%;"><span class="y-label">120</span></div>
+                        <div class="grid-line" style="top: 60%;"><span class="y-label">100</span></div>
+                        <div class="grid-line" style="top: 80%;"><span class="y-label">80</span></div>
+                        <div class="grid-line" style="top: 100%;"><span class="y-label">60</span></div>
                     </div>
-                    <svg class="line-chart-svg" viewBox="0 0 500 200" preserveAspectRatio="none">
+                    <svg class="line-chart-svg" viewBox="0 0 500 100" preserveAspectRatio="none">
                         <defs>
                             <linearGradient id="lineGradient" x1="0%" y1="0%" x2="0%" y2="100%">
                                 <stop offset="0%" style="stop-color:#22c55e;stop-opacity:1" />
                                 <stop offset="100%" style="stop-color:#16a34a;stop-opacity:1" />
                             </linearGradient>
                         </defs>
-                        <polyline
-                            points="0,145 100,110 200,90 300,120 400,25 500,20"
+                        <polyline id="heartRateLine"
+                            points="0,73 100,55 200,45 300,60 400,12.5 500,10"
                             fill="none"
                             stroke="url(#lineGradient)"
                             stroke-width="3"
                             stroke-linecap="round"
                             stroke-linejoin="round"/>
-                        <circle cx="0" cy="145" r="5" fill="#22c55e"/>
-                        <circle cx="100" cy="110" r="5" fill="#22c55e"/>
-                        <circle cx="200" cy="90" r="5" fill="#22c55e"/>
-                        <circle cx="300" cy="120" r="5" fill="#22c55e"/>
-                        <circle cx="400" cy="25" r="5" fill="#22c55e"/>
-                        <circle cx="500" cy="20" r="5" fill="#22c55e"/>
+                        <circle cx="0" cy="73" r="4" fill="#22c55e" class="hr-point"/>
+                        <circle cx="100" cy="55" r="4" fill="#22c55e" class="hr-point"/>
+                        <circle cx="200" cy="45" r="4" fill="#22c55e" class="hr-point"/>
+                        <circle cx="300" cy="60" r="4" fill="#22c55e" class="hr-point"/>
+                        <circle cx="400" cy="12.5" r="4" fill="#22c55e" class="hr-point"/>
+                        <circle cx="500" cy="10" r="4" fill="#22c55e" class="hr-point"/>
                     </svg>
                     <span class="x-label" style="left: 15%;">Item 1</span>
                     <span class="x-label" style="left: 30%;">Item 2</span>
                     <span class="x-label" style="left: 45%;">Item 3</span>
                     <span class="x-label" style="left: 60%;">Item 4</span>
                     <span class="x-label" style="left: 85%;">Item 5</span>
+                </div>
+                <div class="bpm-input-container">
+                    <input type="number" class="bpm-input" id="bpmInput" placeholder="Enter BPM" min="40" max="200">
+                    <button class="set-btn" onclick="setHeartRateFromInput()">Set</button>
                 </div>
             </div>
         </div>
@@ -1817,7 +2021,7 @@
         <div id="products" class="screen">
             <div class="products-header">
                 <button class="back-btn" onclick="showScreen('home')" style="background: rgba(255,255,255,0.1);">←</button>
-                <span class="star-icon">✨</span>
+                <span class="star-icon" onclick="showScreen('coupons')" title="View Coupons & Offers">✨</span>
                 <div class="search-container">
                     <span style="font-size: 20px; color: white;">🔍</span>
                     <input type="text" placeholder="Search products...">
@@ -1890,7 +2094,7 @@
             <div class="profile-header">
                 <div class="profile-avatar">👤</div>
                 <h2>Profile</h2>
-                <button style="background: rgba(255,255,255,0.2); border: none; color: white; padding: 8px 20px; border-radius: 15px; margin-top: 10px; cursor: pointer;">Edit</button>
+                <button style="background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%); border: none; color: white; padding: 8px 20px; border-radius: 15px; margin-top: 10px; cursor: pointer; font-weight: 600; box-shadow: 0 4px 10px rgba(34, 197, 94, 0.3);">Edit</button>
             </div>
             <div class="profile-content">
                 <div class="profile-field">
@@ -2113,13 +2317,21 @@
                         <!-- Grid lines will be added by JavaScript -->
                     </div>
                 </div>
+
+                <div class="bp-input-container">
+                    <div class="bp-input-label">Enter Blood Pressure Reading</div>
+                    <div class="bp-input-wrapper">
+                        <input type="text" class="bp-input" id="bpInput" placeholder="e.g., 120/80">
+                        <button class="bp-set-btn" onclick="addBPReading()">Add Reading</button>
+                    </div>
+                </div>
             </div>
         </div>
 
         <!-- Sleep Performance Screen -->
         <div id="sleep" class="screen">
             <div class="sleep-container">
-                <div class="header" style="background: rgba(102, 126, 234, 0.2); backdrop-filter: blur(10px);">
+                <div class="header" style="background: linear-gradient(135deg, #0a0a0a 0%, #22c55e 100%);">
                     <button class="back-btn" onclick="showScreen('home')">←</button>
                     <h1 style="color: white;">Sleep Performance</h1>
                     <div style="width: 36px;"></div>
@@ -2127,12 +2339,12 @@
                 
                 <div class="sleep-header-icon">
                     <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="50" cy="50" r="35" fill="white" opacity="0.9"/>
-                        <path d="M50,20 A30,30 0 0,1 70,50 A25,25 0 0,0 50,30 A25,25 0 0,0 30,50 A30,30 0 0,1 50,20 Z" fill="#667eea"/>
-                        <circle cx="45" cy="45" r="3" fill="white"/>
-                        <circle cx="60" cy="50" r="2" fill="white"/>
-                        <text x="75" y="30" font-family="Arial" font-size="16" fill="white" font-weight="bold">Z</text>
-                        <text x="82" y="22" font-family="Arial" font-size="12" fill="white" font-weight="bold">Z</text>
+                        <circle cx="50" cy="50" r="35" fill="#22c55e" opacity="0.9"/>
+                        <path d="M50,20 A30,30 0 0,1 70,50 A25,25 0 0,0 50,30 A25,25 0 0,0 30,50 A30,30 0 0,1 50,20 Z" fill="#0a0a0a"/>
+                        <circle cx="45" cy="45" r="3" fill="#22c55e"/>
+                        <circle cx="60" cy="50" r="2" fill="#22c55e"/>
+                        <text x="75" y="30" font-family="Arial" font-size="16" fill="#22c55e" font-weight="bold">Z</text>
+                        <text x="82" y="22" font-family="Arial" font-size="12" fill="#22c55e" font-weight="bold">Z</text>
                     </svg>
                 </div>
                 
@@ -2235,12 +2447,15 @@
                         <div class="stress-gauge">
                             <canvas id="stressGaugeCanvas"></canvas>
                         </div>
-                        
                         <div style="text-align: center;">
                             <div class="stress-level-badge" id="stressLevelLabel">Medium</div>
                             <div class="stress-controls">
                                 <button class="stress-control-btn" onclick="adjustStress(-0.1)">−</button>
                                 <button class="stress-control-btn" onclick="adjustStress(0.1)">+</button>
+                            </div>
+                            <div class="stress-input-container">
+                                <input type="number" class="stress-input" id="stressInput" placeholder="0.0-3.0" step="0.1" min="0" max="3">
+                                <button class="stress-set-btn" onclick="setStressFromInput()">Set</button>
                             </div>
                         </div>
                     </div>
@@ -2372,6 +2587,7 @@
         let currentHeartRate = 87;
         let currentStressLevel = 1.0;
         let currentSleepMinutes = 534; // 8:54 = 534 minutes
+        let currentBPReading = { reading: '120/80', date: 'Today', x: 50, y: 40 }; // Store single BP reading
         let pointsHistory = [
             { activity: 'Good Sleep (8h 54m)', points: 15, time: 'Today' },
             { activity: 'Stay Hydrated', points: 10, time: 'Today' },
@@ -2384,11 +2600,13 @@
             if (currentHeartRate < 40) currentHeartRate = 40;
             if (currentHeartRate > 200) currentHeartRate = 200;
             updateHeartRateDisplay();
+            updateHeartRateChart();
         }
 
         function resetHeartRate() {
             currentHeartRate = 87;
             updateHeartRateDisplay();
+            updateHeartRateChart();
         }
 
         function updateHeartRateDisplay() {
@@ -2397,6 +2615,65 @@
             if (homeDisplay) {
                 homeDisplay.innerHTML = `<span style="font-size: 24px; color: white; font-weight: bold;">${currentHeartRate} BPM</span>`;
             }
+        }
+
+        function updateHeartRateChart() {
+            const chartLine = document.getElementById('heartRateLine');
+            if (!chartLine) return;
+            
+            // Y-axis range: 60-160 BPM
+            // Chart height: 0-100 (viewBox units)
+            // Convert BPM to Y coordinate (inverted because SVG Y goes down)
+            const minBPM = 60;
+            const maxBPM = 160;
+            const chartHeight = 100;
+            
+            const baseY = ((maxBPM - currentHeartRate) / (maxBPM - minBPM)) * chartHeight;
+            
+            // Generate new data points based on current heart rate with natural variation
+            const variation = 8; // ±8 BPM variation
+            
+            const points = [];
+            for (let i = 0; i <= 5; i++) {
+                const x = i * 100;
+                const randomVariation = (Math.random() - 0.5) * variation;
+                const bpmValue = currentHeartRate + randomVariation;
+                const clampedBPM = Math.max(minBPM, Math.min(maxBPM, bpmValue));
+                const y = ((maxBPM - clampedBPM) / (maxBPM - minBPM)) * chartHeight;
+                points.push(`${x},${y}`);
+            }
+            
+            chartLine.setAttribute('points', points.join(' '));
+            
+            // Update circles
+            const circles = document.querySelectorAll('.hr-point');
+            points.forEach((point, index) => {
+                if (circles[index]) {
+                    const [x, y] = point.split(',');
+                    circles[index].setAttribute('cx', x);
+                    circles[index].setAttribute('cy', y);
+                }
+            });
+        }
+
+        function setHeartRateFromInput() {
+            const input = document.getElementById('bpmInput');
+            const value = parseInt(input.value);
+            
+            if (isNaN(value)) {
+                alert('Please enter a valid number');
+                return;
+            }
+            
+            if (value < 40 || value > 200) {
+                alert('Please enter a value between 40 and 200 BPM');
+                return;
+            }
+            
+            currentHeartRate = value;
+            updateHeartRateDisplay();
+            updateHeartRateChart();
+            input.value = '';
         }
 
         // Sleep Controls
@@ -2427,17 +2704,43 @@
             document.getElementById('stressScoreValue').textContent = currentStressLevel.toFixed(1);
             
             let level = '';
+            let color = '';
             if (currentStressLevel < 1.0) {
                 level = 'Low';
+                color = '#3b82f6'; // Blue
             } else if (currentStressLevel < 2.0) {
                 level = 'Medium';
+                color = '#1e40af'; // Dark blue
             } else {
                 level = 'High';
+                color = '#dc2626'; // Red
             }
-            document.getElementById('stressLevelLabel').textContent = level;
+            
+            const badge = document.getElementById('stressLevelLabel');
+            badge.textContent = level;
+            badge.style.color = color;
             
             // Redraw gauge
             initStressGauge();
+        }
+
+        function setStressFromInput() {
+            const input = document.getElementById('stressInput');
+            const value = parseFloat(input.value);
+            
+            if (isNaN(value)) {
+                alert('Please enter a valid number');
+                return;
+            }
+            
+            if (value < 0 || value > 3) {
+                alert('Please enter a value between 0.0 and 3.0');
+                return;
+            }
+            
+            currentStressLevel = Math.round(value * 10) / 10;
+            updateStressDisplay();
+            input.value = '';
         }
 
         // Points functionality
@@ -2564,6 +2867,24 @@
             
             const navItems = document.querySelectorAll('.nav-item');
             navItems.forEach(item => item.classList.remove('active'));
+            
+            // Show congratulations flash when entering coupons screen
+            if (screenId === 'coupons') {
+                showCongratsFlash();
+            }
+        }
+
+        function showCongratsFlash() {
+            // Create flash message
+            const flash = document.createElement('div');
+            flash.className = 'congrats-flash';
+            flash.textContent = 'Congrats here is your points!';
+            document.body.appendChild(flash);
+            
+            // Remove after 1 second
+            setTimeout(() => {
+                flash.remove();
+            }, 1000);
         }
 
         function addToCart(name, price, description) {
@@ -3068,7 +3389,8 @@
             
             // Horizontal grid lines with labels
             const yValues = [
-                { value: '120/80', position: 25 },
+                { value: '140/90', position: 15 },
+                { value: '120/80', position: 40 },
                 { value: '110/70', position: 75 }
             ];
             
@@ -3102,49 +3424,96 @@
             
             plot.appendChild(grid);
             
-            // Sample data points - [x position %, y position %, reading]
-            const dataPoints = [
-                // 120/80 readings (upper line)
-                { x: 12, y: 25, reading: '120/80', date: 'Jan 1' },
-                { x: 18, y: 25, reading: '120/80', date: 'Jan 3' },
-                { x: 24, y: 25, reading: '121/81', date: 'Jan 5' },
-                { x: 30, y: 25, reading: '119/79', date: 'Jan 7' },
-                { x: 35, y: 25, reading: '120/80', date: 'Jan 9' },
-                { x: 40, y: 25, reading: '120/80', date: 'Jan 11' },
-                { x: 45, y: 25, reading: '122/82', date: 'Jan 13' },
-                { x: 50, y: 25, reading: '120/80', date: 'Jan 15' },
-                { x: 55, y: 25, reading: '120/80', date: 'Jan 17' },
-                { x: 60, y: 25, reading: '121/80', date: 'Jan 19' },
-                { x: 65, y: 25, reading: '120/80', date: 'Jan 21' },
-                { x: 70, y: 25, reading: '120/80', date: 'Jan 23' },
-                { x: 75, y: 25, reading: '119/80', date: 'Jan 25' },
-                { x: 80, y: 25, reading: '120/80', date: 'Jan 27' },
-                
-                // 110/70 readings (lower line)
-                { x: 25, y: 75, reading: '110/70', date: 'Jan 4' },
-                { x: 31, y: 75, reading: '111/71', date: 'Jan 8' },
-                { x: 36, y: 75, reading: '110/70', date: 'Jan 10' },
-                { x: 52, y: 75, reading: '110/70', date: 'Jan 16' },
-                { x: 72, y: 75, reading: '110/70', date: 'Jan 24' }
-            ];
+            // Add single data point
+            const dot = document.createElement('div');
+            dot.className = 'bp-data-point';
+            dot.style.left = currentBPReading.x + '%';
+            dot.style.top = currentBPReading.y + '%';
+            dot.title = `${currentBPReading.reading} - ${currentBPReading.date}`;
             
-            dataPoints.forEach(point => {
-                const dot = document.createElement('div');
-                dot.className = 'bp-data-point';
-                dot.style.left = point.x + '%';
-                dot.style.top = point.y + '%';
-                dot.title = `${point.reading} - ${point.date}`;
-                
-                dot.onclick = function() {
-                    showBPReading(point.reading, point.date);
-                };
-                
-                plot.appendChild(dot);
-            });
+            dot.onclick = function() {
+                showBPReading(currentBPReading.reading, currentBPReading.date);
+            };
+            
+            plot.appendChild(dot);
         }
 
         function showBPReading(reading, date) {
             alert(`Blood Pressure: ${reading}\nDate: ${date}\n\nThis reading is within the normal range. Keep up the healthy lifestyle!`);
+        }
+
+        function addBPReading() {
+            const input = document.getElementById('bpInput');
+            const value = input.value.trim();
+            
+            // Validate format (e.g., 120/80)
+            const bpRegex = /^(\d{2,3})\/(\d{2,3})$/;
+            const match = value.match(bpRegex);
+            
+            if (!match) {
+                alert('Please enter blood pressure in format: XXX/XX (e.g., 120/80)');
+                return;
+            }
+            
+            const systolic = parseInt(match[1]);
+            const diastolic = parseInt(match[2]);
+            
+            // Validate ranges
+            if (systolic < 70 || systolic > 200 || diastolic < 40 || diastolic > 130) {
+                alert('Please enter valid blood pressure values:\nSystolic: 70-200\nDiastolic: 40-130');
+                return;
+            }
+            
+            // Determine which line to place the point on based on the reading
+            let yPosition;
+            if (systolic >= 135) {
+                yPosition = 15; // 140/90 line
+            } else if (systolic >= 115) {
+                yPosition = 40; // 120/80 line
+            } else {
+                yPosition = 75; // 110/70 line
+            }
+            
+            // Update current BP reading
+            const today = new Date();
+            const dateStr = today.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+            
+            currentBPReading = {
+                reading: value,
+                date: dateStr,
+                x: 50, // Center position
+                y: yPosition
+            };
+            
+            // Redraw the plot
+            refreshBPPlot();
+            
+            input.value = '';
+            alert(`Blood Pressure reading ${value} updated!\nDate: ${dateStr}`);
+        }
+
+        function refreshBPPlot() {
+            const plot = document.getElementById('bpScatterPlot');
+            if (!plot) return;
+            
+            // Clear existing point
+            const existingPoint = plot.querySelector('.bp-data-point');
+            if (existingPoint) {
+                existingPoint.remove();
+            }
+            
+            // Add updated point
+            const dot = document.createElement('div');
+            dot.className = 'bp-data-point';
+            dot.style.left = currentBPReading.x + '%';
+            dot.style.top = currentBPReading.y + '%';
+            dot.title = `${currentBPReading.reading} - ${currentBPReading.date}`;
+            
+            dot.onclick = function() {
+                showBPReading(currentBPReading.reading, currentBPReading.date);
+            };
+            
+            plot.appendChild(dot);
         }
     </script>
 </body>
