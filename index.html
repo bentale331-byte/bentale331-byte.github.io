@@ -1901,7 +1901,7 @@
         <!-- Home Screen -->
         <div id="home" class="screen active">
             <div class="header">
-                <h1>Energy Drink Monitoring</h1>
+                <h1>Energy</h1>
             </div>
             <div class="home-grid">
                 <div class="home-card" onclick="showScreen('heartRate')">
@@ -2983,22 +2983,82 @@
         function getBotResponse(message) {
             const lowerMessage = message.toLowerCase();
             
-            if (lowerMessage.includes('heart') || lowerMessage.includes('bpm')) {
-                return "Your current heart rate is 87 BPM, which is within the normal range for adults (60-100 BPM). A healthy heart rate indicates good cardiovascular fitness. Would you like tips on maintaining a healthy heart?";
+            // Convert sleep minutes to hours and minutes format
+            const sleepHours = Math.floor(currentSleepMinutes / 60);
+            const sleepMins = currentSleepMinutes % 60;
+            const sleepTime = `${sleepHours}:${sleepMins.toString().padStart(2, '0')}`;
+            
+            // Determine stress level name
+            let stressLevelName = '';
+            if (currentStressLevel < 1.0) {
+                stressLevelName = 'Low';
+            } else if (currentStressLevel < 2.0) {
+                stressLevelName = 'Medium';
+            } else {
+                stressLevelName = 'High';
+            }
+            
+            if (lowerMessage.includes('heart') || lowerMessage.includes('bpm') || lowerMessage.includes('pulse')) {
+                let hrAdvice = '';
+                if (currentHeartRate < 60) {
+                    hrAdvice = "Your heart rate is below the normal resting range. This could indicate excellent cardiovascular fitness, but if you're not an athlete, consider consulting a doctor.";
+                } else if (currentHeartRate <= 100) {
+                    hrAdvice = "Your heart rate is within the normal resting range. Keep up the healthy lifestyle!";
+                } else if (currentHeartRate <= 120) {
+                    hrAdvice = "Your heart rate is slightly elevated. This is normal after exercise, but if you're resting, consider some relaxation techniques.";
+                } else {
+                    hrAdvice = "Your heart rate is quite high. If you're not exercising, please ensure you're hydrating and relaxing. Consider consulting a healthcare professional if this persists.";
+                }
+                return `Your current heart rate is ${currentHeartRate} BPM. ${hrAdvice} Would you like tips on maintaining a healthy heart rate?`;
+                
             } else if (lowerMessage.includes('sleep')) {
-                return "Getting quality sleep is crucial for your health. Here are some tips: maintain a consistent sleep schedule, avoid screens 1 hour before bed, keep your bedroom cool and dark, and aim for 7-9 hours of sleep each night. Your last sleep session showed 8:54 hours - that's great!";
+                let sleepAdvice = '';
+                const totalSleepHours = currentSleepMinutes / 60;
+                if (totalSleepHours < 6) {
+                    sleepAdvice = "You're not getting enough sleep! Adults need 7-9 hours for optimal health. Try going to bed earlier tonight.";
+                } else if (totalSleepHours <= 9) {
+                    sleepAdvice = "That's a healthy amount of sleep! You're giving your body the rest it needs.";
+                } else {
+                    sleepAdvice = "You're sleeping quite a lot. While rest is important, oversleeping can sometimes indicate other health issues. Aim for 7-9 hours.";
+                }
+                return `Your last sleep session was ${sleepTime} hours. ${sleepAdvice} Getting quality sleep is crucial for recovery and energy levels. Would you like tips for better sleep?`;
+                
             } else if (lowerMessage.includes('stress')) {
-                return "Your current stress level is 1.0 (Medium). To manage stress, try: deep breathing exercises, regular physical activity, meditation, adequate sleep, and talking to friends or professionals. Would you like me to guide you through a quick breathing exercise?";
+                let stressAdvice = '';
+                if (currentStressLevel < 1.0) {
+                    stressAdvice = "Great job staying calm! Keep up your stress management practices.";
+                } else if (currentStressLevel < 2.0) {
+                    stressAdvice = "Your stress is at a moderate level. Try some breathing exercises or take a short break.";
+                } else {
+                    stressAdvice = "Your stress level is high. Please take time to relax. Try deep breathing, meditation, or talking to someone you trust.";
+                }
+                return `Your current stress level is ${currentStressLevel.toFixed(1)} (${stressLevelName}). ${stressAdvice} Would you like me to guide you through a quick relaxation exercise?`;
+                
+            } else if (lowerMessage.includes('health') || lowerMessage.includes('summary') || lowerMessage.includes('status')) {
+                return `📊 Your Health Summary:\n\n❤️ Heart Rate: ${currentHeartRate} BPM\n😴 Sleep: ${sleepTime} hours\n😌 Stress Level: ${currentStressLevel.toFixed(1)} (${stressLevelName})\n\nOverall, ${currentHeartRate <= 100 && currentStressLevel < 2.0 && currentSleepMinutes >= 360 ? "you're doing great! Keep it up!" : "there's room for improvement. Let me know if you need specific advice on any metric!"}`;
+                
             } else if (lowerMessage.includes('nutrition') || lowerMessage.includes('diet') || lowerMessage.includes('food')) {
-                return "Good nutrition is essential for overall health. Focus on: eating plenty of fruits and vegetables, staying hydrated with water, choosing whole grains, limiting processed foods, and maintaining balanced meals. Check out our Products section for healthy drink options!";
+                return `Good nutrition is essential for overall health. Focus on: eating plenty of fruits and vegetables, staying hydrated with water, choosing whole grains, limiting processed foods, and maintaining balanced meals. Check out our Products section for healthy drink options!\n\n💡 Based on your current heart rate of ${currentHeartRate} BPM, ${currentHeartRate > 100 ? "avoid caffeine and stimulants." : "you can maintain your current diet."}`;
+                
             } else if (lowerMessage.includes('blood pressure') || lowerMessage.includes('bp')) {
                 return "Your blood pressure reading is 120/80 mmHg, which is considered normal. Maintain this by: reducing sodium intake, regular exercise, maintaining healthy weight, limiting alcohol, and managing stress. Regular monitoring is important!";
+                
             } else if (lowerMessage.includes('exercise') || lowerMessage.includes('workout')) {
-                return "Regular exercise is vital for health! Adults should aim for: 150 minutes of moderate aerobic activity per week, strength training 2+ days a week, and daily stretching. Start slowly and gradually increase intensity. Always consult your doctor before starting a new exercise program.";
+                let exerciseAdvice = '';
+                if (currentHeartRate < 70) {
+                    exerciseAdvice = "Your low resting heart rate suggests good fitness. You can handle moderate to intense workouts.";
+                } else if (currentHeartRate > 90) {
+                    exerciseAdvice = "Your elevated heart rate suggests starting with light exercise and gradually building intensity.";
+                } else {
+                    exerciseAdvice = "Your heart rate is in a good range for starting moderate exercise.";
+                }
+                return `Regular exercise is vital for health! Adults should aim for: 150 minutes of moderate aerobic activity per week, strength training 2+ days a week, and daily stretching. ${exerciseAdvice} Always consult your doctor before starting a new exercise program.`;
+                
             } else if (lowerMessage.includes('water') || lowerMessage.includes('hydration')) {
                 return "Staying hydrated is crucial! Aim to drink 8-10 glasses (about 2 liters) of water daily. Signs of good hydration: clear or light yellow urine, moist lips, and feeling energized. Increase intake during exercise or hot weather.";
+                
             } else {
-                return "I'm here to help with your health questions! You can ask me about heart rate, sleep, stress management, nutrition, blood pressure, exercise, or general wellness tips. How can I assist you today?";
+                return `I'm here to help with your health questions! You can ask me about:\n\n❤️ Heart rate (currently ${currentHeartRate} BPM)\n😴 Sleep (last session: ${sleepTime})\n😌 Stress (currently ${stressLevelName})\n💪 Exercise, nutrition, or general wellness\n\nHow can I assist you today?`;
             }
         }
 
